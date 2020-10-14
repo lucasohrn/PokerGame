@@ -101,7 +101,7 @@ namespace Poker.ConsoleApp
         {
             UserInterface.Clear();
             UserInterface.PrintHand(player);
-            UserInterface.WaitForAnyKey();
+            UserInterface.WaitForKey();
             UserInterface.Clear();
         }
 
@@ -111,14 +111,26 @@ namespace Poker.ConsoleApp
             UserInterface.PresentHandType(player.HandType);
         }
 
+        static public bool PresentStats(IPlayer[] players)
+        {
+            WriteLine("Totalt antal vinster\n"
+                + "====================\n"
+                + String.Join(", ", 
+                    from player in players
+                    select $"{player.Name}: {player.Wins}"));
+            return Char.ToLower(
+                    WaitForKey("[Enter] Fortsätt, [Q] Avsluta").KeyChar) != 
+                    'q'; 
+        }
+
         static public void PresentWinner(IPlayer winner)
         {
-            Message($"Vinnaren är: {winner.Name}\n");
+            WriteLine($"Vinnaren är: {winner.Name}\n");
         }
 
         static public void DeclareDraw(IPlayer[] tiedPlayers)
         {
-            Message("Oavgjort mellan: " + String.Join(", ", 
+            WriteLine("Oavgjort mellan: " + String.Join(", ", 
                 from player in tiedPlayers select player.Name));
         }
 
@@ -136,13 +148,14 @@ namespace Poker.ConsoleApp
         static private void Message(string message)
         {
             WriteLine(message + "\n");
-            WaitForAnyKey();
+            WaitForKey();
         }
 
-        static private void WaitForAnyKey()
+        static public ConsoleKeyInfo WaitForKey(
+            string prompt = "Tryck [Enter] för att fortsätta..")
         {
-            WriteLine("Tryck [Enter] för att fortsätta..");
-            ReadKey(true);
+            WriteLine(prompt);
+            return ReadKey(true);
         }
 
         static private string RegisterPlayer()
@@ -190,7 +203,7 @@ namespace Poker.ConsoleApp
                 WriteLine();
             }
 
-            WaitForAnyKey();
+            WaitForKey();
 
             Clear();
         }

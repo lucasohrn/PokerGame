@@ -14,9 +14,9 @@ namespace Poker.Lib
     {
         IPlayer[] Players { get; }
 
-        void StartGame();
+        void RunGame();
 
-        void Quit();
+        void Exit();
 
         void SaveGameAndExit(string fileName);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Poker.ConsoleApp
 {
@@ -32,18 +33,40 @@ namespace Poker.ConsoleApp
         private static void OnWinner(IPlayer player)
         {
             UserInterface.PresentWinner(player);
+            PresentStats();
         }
 
         private static void OnDraw(IPlayer[] tiedPlayers)
         {
             UserInterface.DeclareDraw(tiedPlayers);
+            PresentStats();
+        }
+
+        private static void PresentStats()
+        {
+            if (!UserInterface.PresentStats(game.Players))
+            {
+                if (Char.ToLower(
+                        UserInterface.WaitForKey("Spara spelet? [J/N]").KeyChar) 
+                    == 'j')
+                {
+                    game.SaveGameAndExit("savedgame.txt");
+                }
+                else 
+                {
+                    game.Exit();
+                }
+            }
         }
 
         static void Main(string[] args)
         {
-            game = args.Length == 1
-                ? Lib.GameFactory.LoadGame(args[0])
-                : Lib.GameFactory.NewGame(UserInterface.RegisterPlayers());
+            game = (File.Exists("savedgame.txt") 
+                && Char.ToLower(UserInterface.WaitForKey(
+                        "Ladda sparat spel? [J/N]").KeyChar) 
+                    == 'j')
+                ? Lib.GameFactory.LoadGame("savedgame.txt")
+                : Lib.GameFactory.NewGame(UserInterface.RegisterPlayers());           
             
             game.NewDeal += OnNewDeal;
             game.SelectCardsToDiscard += OnSelectCardsToDiscard;
@@ -52,7 +75,7 @@ namespace Poker.ConsoleApp
             game.Winner += OnWinner;
             game.Draw += OnDraw;
 
-            game.StartGame();   
+            game.RunGame();   
         }
 
     }
