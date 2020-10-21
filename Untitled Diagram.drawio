@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-10-21T12:50:46.379Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36" etag="HghDCXdU5T_hVXIuZjn_" version="13.8.1" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-21T12:57:04.237Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36" etag="5NqJbp-OGZ69T8kENkVW" version="13.8.1" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2062" dy="1122" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -38,6 +38,24 @@
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="900" y="140" as="sourcePoint" />
             <mxPoint x="1060" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qwY-LyKIQXxQT6gyZlUQ-26" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;Enum Suite&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;Clubs&lt;br&gt;Diamonds&lt;br&gt;Hearts&lt;br&gt;Spades" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;comic=0;strokeColor=#d79b00;strokeWidth=2;fillColor=#ffe6cc;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1000" y="150" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qwY-LyKIQXxQT6gyZlUQ-27" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;Enum Rank&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;Two = 2&lt;br&gt;Three&lt;br&gt;Four&lt;br&gt;Five&lt;br&gt;Six&lt;br&gt;Seven&lt;br&gt;Eight&lt;br&gt;Nine&lt;br&gt;Ten&lt;br&gt;Jack&lt;br&gt;Queen&lt;br&gt;King&lt;br&gt;Ace" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;comic=0;strokeColor=#d79b00;strokeWidth=2;fillColor=#ffe6cc;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1000" y="270" width="80" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="qwY-LyKIQXxQT6gyZlUQ-28" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;strokeColor=#000000;fontSize=12;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="qwY-LyKIQXxQT6gyZlUQ-23" target="qwY-LyKIQXxQT6gyZlUQ-26">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="720" y="195" as="sourcePoint" />
+            <mxPoint x="837" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qwY-LyKIQXxQT6gyZlUQ-29" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;strokeColor=#000000;fontSize=12;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="qwY-LyKIQXxQT6gyZlUQ-23" target="qwY-LyKIQXxQT6gyZlUQ-27">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="730" y="205" as="sourcePoint" />
+            <mxPoint x="847" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
