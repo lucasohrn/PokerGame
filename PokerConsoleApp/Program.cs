@@ -61,22 +61,21 @@ namespace Poker.ConsoleApp
 
         static void Main(string[] args)
         {
-            game = (File.Exists("savedgame.txt") 
-                && Char.ToLower(UserInterface.WaitForKey(
-                        "Ladda sparat spel? [J/N]").KeyChar) 
-                    == 'j')
-                ? Lib.GameFactory.LoadGame("savedgame.txt")
-                : Lib.GameFactory.NewGame(UserInterface.RegisterPlayers());           
+            game = (File.Exists("savedgame.txt") //kollar om sparat spel existerar
+                && Char.ToLower(UserInterface.WaitForKey //kollar efter spelar-input
+                ("Ladda sparat spel? [J/N]").KeyChar) == 'j') // om input lika med j ladda spel. om input = n starta ett nytt 
+                ? Lib.GameFactory.LoadGame("savedgame.txt") // Kör sparat spel
+                : Lib.GameFactory.NewGame(UserInterface.RegisterPlayers()); // Starta nytt spel  
             
-            game.NewDeal += OnNewDeal;
-            game.SelectCardsToDiscard += OnSelectCardsToDiscard;
-            game.RecievedReplacementCards += OnRecievedReplacementCards;
-            game.ShowAllHands += OnShowAllHands;
-            game.Winner += OnWinner;
-            game.Draw += OnDraw;
+            // Assignar lyssnare till alla event
+            game.NewDeal += OnNewDeal;  // Dela ut kort
+            game.SelectCardsToDiscard += OnSelectCardsToDiscard;    // Välj kort att kasta
+            game.RecievedReplacementCards += OnRecievedReplacementCards;    // Få nya/nytt kort
+            game.ShowAllHands += OnShowAllHands;    // Visa alla händer
+            game.Winner += OnWinner;    // Kora vinnaren
+            game.Draw += OnDraw;    // Spelarna kom lika
 
             game.RunGame();   
         }
-
     }
 }

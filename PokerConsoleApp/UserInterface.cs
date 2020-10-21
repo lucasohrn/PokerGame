@@ -7,7 +7,7 @@ namespace Poker.ConsoleApp
 {
     static class UserInterface
     {
-        static public string[] RegisterPlayers()
+        static public string[] RegisterPlayers() //Registrer spelare tills dess att man lämnar input tomt
         {
             UserInterface.Clear();
 
