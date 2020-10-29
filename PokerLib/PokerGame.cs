@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace Poker.Lib
 {
@@ -6,7 +7,12 @@ namespace Poker.Lib
     {
         public PokerGame(string[] players)
         {
+    
+        }
 
+        public PokerGame(string fileName)
+        {
+            
         }
 
         public IPlayer[] Players => throw new NotImplementedException();
