@@ -9,8 +9,6 @@ namespace Poker.Lib
 
         }
 
-
-
         public IPlayer[] Players => throw new NotImplementedException();
 
         public event OnNewDeal NewDeal;
@@ -22,7 +20,29 @@ namespace Poker.Lib
 
         public void Exit()
         {
-            throw new NotImplementedException();
+            while (true)
+            {
+                Console.WriteLine("Vill du spara spelet? J/N");
+                string input = Console.ReadLine().ToLower();
+
+                if (input == "j")
+                {
+                    while (true)
+                    {
+                        Console.WriteLine("Vad ska din sparfil heta?");
+                        string input2 = Console.ReadLine().ToLower();
+
+                        if (input2 != null)
+                        {
+                            SaveGameAndExit(input2);
+                        }
+                    }
+                }
+                else if (input == "n")
+                {
+                    Environment.Exit(0);
+                }
+            }
         }
 
         public void RunGame()
