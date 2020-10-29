@@ -5,6 +5,8 @@ namespace Poker.Lib
 {
     public class PokerGame : IPokerGame
     {
+        int playerCount;
+
         public PokerGame(string[] players)
         {
     
@@ -53,6 +55,9 @@ namespace Poker.Lib
 
         public void RunGame()
         {
+            
+
+
             throw new NotImplementedException();
         }
 
