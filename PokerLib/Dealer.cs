@@ -1,6 +1,6 @@
 using System;
 
-namespace Poker
+namespace Poker.Lib
 {
     class Dealer
     {

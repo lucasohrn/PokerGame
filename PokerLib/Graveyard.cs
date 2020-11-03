@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Poker
+namespace Poker.Lib
 {
     class Graveyard
     {
         int numberOfCardsInGraveyard;
-        List<Card> Cards;
+        List<ICard> Cards;
 
         private void ReturnCardsFromGY()
         {

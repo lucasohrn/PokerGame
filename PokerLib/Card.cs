@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Poker
+namespace Poker.Lib
 {
     public class Card : ICard
     {
