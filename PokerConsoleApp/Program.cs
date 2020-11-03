@@ -68,12 +68,12 @@ namespace Poker.ConsoleApp
                 : Lib.GameFactory.NewGame(UserInterface.RegisterPlayers()); // Starta nytt spel  
             
             // Assignar lyssnare till alla event
-            game.NewDeal += OnNewDeal;  // Dela ut kort
-            game.SelectCardsToDiscard += OnSelectCardsToDiscard;    // Välj kort att kasta
-            game.RecievedReplacementCards += OnRecievedReplacementCards;    // Få nya/nytt kort
-            game.ShowAllHands += OnShowAllHands;    // Visa alla händer
-            game.Winner += OnWinner;    // Kora vinnaren
-            game.Draw += OnDraw;    // Spelarna kom lika
+            game.NewDeal += OnNewDeal; // Dela ut kort
+            game.SelectCardsToDiscard += OnSelectCardsToDiscard; // Välj kort att kasta
+            game.RecievedReplacementCards += OnRecievedReplacementCards; // Få nya/nytt kort
+            game.ShowAllHands += OnShowAllHands; // Visa alla händer
+            game.Winner += OnWinner; // Kora vinnaren
+            game.Draw += OnDraw; // Spelarna kom lika
 
             game.RunGame();   
         }
