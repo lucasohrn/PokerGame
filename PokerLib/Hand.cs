@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Poker.Lib
@@ -8,14 +7,9 @@ namespace Poker.Lib
     {
         ICard[] hand;
 
-        private void PlayerHand()
+        private HandType GetHandType()
         {
-
-        }
-
-        private void ReturnHandtype()
-        {
-
+            throw new NotImplementedException();
         }
 
         void SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
@@ -37,6 +31,5 @@ namespace Poker.Lib
         {
 
         }
-
     }
 }
