@@ -1,23 +1,39 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Poker.Lib
 {
     public class PokerGame : IPokerGame
     {
-        int playerCount;
+        private IPlayer[] players;
+        public IPlayer[] Players => players;
 
-        public PokerGame(string[] players)
+        public PokerGame(string[] players) //skapar ett nytt spelar object för varje namn angivet
         {
-    
+            this.players = new IPlayer[players.Length];
+            for (int i = 0; i < players.Length; i++)
+            {
+                this.players[i] = new Player(players[i], 0);
+            }          
         }
 
-        public PokerGame(string fileName)
+        public PokerGame(string fileName) //laddar ett gammalt spel
         {
-            
+            if (File.Exists(fileName))
+            {
+                string json = File.ReadAllText(fileName);
+                List<IPlayer> players = JsonConvert.DeserializeObject<List<IPlayer>>(json);
+                this.players = new IPlayer[players.Count];
+                this.players = players.ToArray();
+            }
+            else
+            {
+                Console.Write($"The file \"{fileName}\" does not exist");
+                //implomentera så man kan testa en annan fil eller starta nytt spel
+            }
         }
-
-        public IPlayer[] Players => throw new NotImplementedException();
 
         public event OnNewDeal NewDeal;
         public event OnSelectCardsToDiscard SelectCardsToDiscard;
@@ -26,6 +42,29 @@ namespace Poker.Lib
         public event OnWinner Winner;
         public event OnDraw Draw;
 
+
+        private Dealer dealer;
+        private bool gameIsOver = false;
+        public void RunGame()
+        {
+            dealer = new Dealer(players);
+            while (!gameIsOver)
+            {
+                NewDeal();
+
+                foreach (IPlayer player in Players)
+                {
+                    SelectCardsToDiscard(player);
+                }
+
+                foreach (IPlayer player in Players)
+                {
+                    RecievedReplacementCards(player);
+                }
+
+                ShowAllHands();
+            }
+        }
         public void Exit()
         {
             while (true)
@@ -38,11 +77,11 @@ namespace Poker.Lib
                     while (true)
                     {
                         Console.WriteLine("Vad ska din sparfil heta?");
-                        string input2 = Console.ReadLine().ToLower();
+                        string fileName = Console.ReadLine().ToLower();
 
-                        if (input2 != null)
+                        if (fileName != null)
                         {
-                            SaveGameAndExit(input2);
+                            SaveGameAndExit(fileName);
                         }
                     }
                 }
@@ -52,18 +91,11 @@ namespace Poker.Lib
                 }
             }
         }
-
-        public void RunGame()
-        {
-            
-
-
-            throw new NotImplementedException();
-        }
-
         public void SaveGameAndExit(string fileName)
         {
-            throw new NotImplementedException();
+            string json = JsonConvert.SerializeObject(players);
+            File.WriteAllText(fileName, json);
+            Environment.Exit(0);
         }
     }
 }
