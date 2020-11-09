@@ -4,13 +4,26 @@ namespace Poker
 {
     class Player : IPlayer
     {
-        public string Name => throw new NotImplementedException();
+        private string name;
+        private int wins;
 
-        public ICard[] Hand => throw new NotImplementedException();
+        public Player(string playerName, int playerWins)
+        {
+            name = playerName;
+            wins = playerWins;
+        }
 
-        public HandType HandType => throw new NotImplementedException();
+        private ICard[] hand;
+    
+        private HandType handType;
+        public HandType HandType => handType;
+        
+        public string Name => name;
 
-        public int Wins => throw new NotImplementedException();
+        public ICard[] Hand => hand;
+
+
+        public int Wins => wins;
 
         public ICard[] Discard { set => throw new NotImplementedException(); }
     }
