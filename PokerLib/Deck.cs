@@ -6,17 +6,17 @@ namespace Poker.Lib
     class Deck
     {
         List<Card> deck = new List<Card>(52);
-        int numberOfCards;
+        //int numberOfCards;
 
         public Deck()
         {
             for (int i = 0; i < 13; i++)
             {
-                Rank rankValue = (Rank)Enum.ToObject(typeof(Rank), i + 2);
+                Rank rankValue = (Rank)i + 2;
 
                 for (int j = 0; j < 4; j++)
                 {
-                    Suite suiteValue = (Suite)Enum.ToObject(typeof(Suite), j);
+                    Suite suiteValue = (Suite)j;
                     Card kort = new Card(suiteValue, rankValue);
                     deck.Add(kort);
                 }

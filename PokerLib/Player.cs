@@ -15,6 +15,7 @@ namespace Poker
         {
             name = playerName;
             wins = playerWins;
+            hand = new ICard[5];
         }
 
         public ICard[] Hand => hand;
