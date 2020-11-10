@@ -1,29 +1,34 @@
 using System;
-
+using System.Collections.Generic;
 namespace Poker.Lib
 {
     class Dealer
     {
         Deck deck = new Deck();
-        public Hand[] playerHands;
+        private IPlayer[] players;
 
         public Dealer(IPlayer[] players)
         {
-           
+           this.players = players;
         }
+        
         void OnNewDeal()
         {
+            //returncards
+            //shuffle
+            //Deck.Shuffle(deck.deck);   
             DealCards();
         }
 
         public void DealCards()
         {
-            
-            for (int i = 0; i < 1; i++)
+            foreach (IPlayer player in players)
             {
-                deck.DrawTopCard();
+                for (int i = 0; i < 5; i++)
+                {
+                  player.Hand[i] = deck.DrawTopCard();
+                }
             }
-            // Dela ut kort
         }
 
         public void GiveNewCard()
