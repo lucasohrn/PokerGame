@@ -9,8 +9,8 @@ namespace Poker.Lib
         private Rank rank;
         public Card(Suite suite, Rank rank)
         {
-            suite = this.suite;
-            rank = this.rank;
+            this.suite = suite;
+            this.rank = rank;
         }
         
         public Suite Suite => suite;
