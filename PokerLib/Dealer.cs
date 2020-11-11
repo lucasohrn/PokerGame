@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
+
 namespace Poker.Lib
 {
-    class Dealer
+    class Dealer : Graveyard
     {
         Deck deck = new Deck();
         private IPlayer[] players;
-
+        Graveyard graveyard = new Graveyard();
+        
         public Dealer(IPlayer[] players)
         {
             this.players = players;
@@ -14,8 +16,6 @@ namespace Poker.Lib
 
         public void OnNewDeal()
         {
-            //returncards
-            //shuffle
             deck.Shuffle();
             FirstDeal();
         }
@@ -31,9 +31,9 @@ namespace Poker.Lib
             }
         }
 
-        public void GiveNewCard()
+        public ICard GiveNewCard()
         {
-            deck.DrawTopCard();
+            return deck.DrawTopCard();
         }
     }
 }

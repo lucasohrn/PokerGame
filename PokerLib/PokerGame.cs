@@ -53,10 +53,19 @@ namespace Poker.Lib
                 NewDeal();
                 dealer.OnNewDeal();
                 
+                for (int i = 0; i < Players.Length; i++)
+                {
+                    SelectCardsToDiscard(Players[i]);
+                    for (int j = 0; j < 5; j++)
+                    {
+                        if(Players[i].Hand[j] == null)
+                            Players[i].Hand[j] = dealer.GiveNewCard();
+                    }
+                    RecievedReplacementCards(Players[i]);
+                }
                 foreach (IPlayer player in Players)
                 {
-                    SelectCardsToDiscard(player);
-                    RecievedReplacementCards(player);
+                    
                 }
                 ShowAllHands();
                 gameIsOver = true;

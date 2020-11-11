@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Poker
+namespace Poker.Lib
 {
     class Player : IPlayer
     {
@@ -24,17 +24,18 @@ namespace Poker
 
         public HandType HandType => handType;
         private HandType handType;
-        void RecieveCard(ICard card)
+        /*
+        bool ShouldRecieveCard()
         {
             for (int i = 0; i < hand.Length; i++)
             {
                 if (hand[i] == null)
                 {
-                    hand[i] = card;
-                    return;
+                    return true;
                 }
             }
         }
+        */
 
         void GetHandType()
         {
@@ -51,10 +52,21 @@ namespace Poker
             ).OrderByDescending(x => x.Count).SelectMany(x => x.Cards);
         }
 
-        
-        List<ICard[]> graveYardCards = new List<ICard[]>();
+        private ICard[] HandAfterDiscard(ICard[] value)
+        {
+            for (int i = 0; i < value.Length; i++)
+            {
+                for (int j = 0; j < hand.Length; j++)
+                {
+                    if (value[i] == hand[j])
+                    {
+                        hand[j] = null;
+                    }
+                }
+            }
+            return hand;
+        }
 
-        public ICard[] Discard { set => graveYardCards.Add(value); }
-
+        public ICard[] Discard { set => HandAfterDiscard(value); }
     }
 }
