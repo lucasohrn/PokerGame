@@ -53,6 +53,7 @@ namespace Poker.Lib
                     NewDeal();
 
                 dealer.OnNewDeal();
+<<<<<<< HEAD
                 for (int i = 0; i < Players.Length; i++)
                 {
                     if (SelectCardsToDiscard != null)
@@ -72,6 +73,42 @@ namespace Poker.Lib
                     ShowAllHands();
                 }
 
+=======
+
+                foreach (IPlayer player in Players)
+                {
+                    if (SelectCardsToDiscard != null)
+                        SelectCardsToDiscard(player);
+
+                    if (RecievedReplacementCards != null)
+                        RecievedReplacementCards(player);
+                }
+                if (ShowAllHands != null)
+                    ShowAllHands();
+
+                IPlayer winner = DeclareWinner();
+                IPlayer[] tiedPlayers = DeclareTiedPlayers();
+
+                IPlayer DeclareWinner()
+                {
+                    return null;
+                }
+
+                IPlayer[] DeclareTiedPlayers()
+                {
+                    return null;
+                }
+
+                if (Winner != null)
+                {
+                    Winner(winner);
+                }
+                else
+                {
+                    Draw(tiedPlayers);
+                }
+
+>>>>>>> 3e0e54afd828fd8b5889103be46687163e7af2a3
                 gameIsOver = true;
             }
         }
