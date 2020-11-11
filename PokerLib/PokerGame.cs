@@ -16,7 +16,7 @@ namespace Poker.Lib
             for (int i = 0; i < players.Length; i++)
             {
                 this.players[i] = new Player(players[i], 0);
-            }          
+            }
         }
 
         public PokerGame(string fileName) //laddar ett gammalt spel
@@ -42,7 +42,6 @@ namespace Poker.Lib
         public event OnWinner Winner;
         public event OnDraw Draw;
 
-
         private Dealer dealer;
         private bool gameIsOver = false;
         public void RunGame()
@@ -50,24 +49,29 @@ namespace Poker.Lib
             dealer = new Dealer(players);
             while (!gameIsOver)
             {
-                NewDeal();
+                if (NewDeal != null)
+                    NewDeal();
+
                 dealer.OnNewDeal();
-                
                 for (int i = 0; i < Players.Length; i++)
                 {
-                    SelectCardsToDiscard(Players[i]);
+                    if (SelectCardsToDiscard != null)
+                        SelectCardsToDiscard(Players[i]);
+
                     for (int j = 0; j < 5; j++)
                     {
-                        if(Players[i].Hand[j] == null)
+                        if (Players[i].Hand[j] == null)
                             Players[i].Hand[j] = dealer.GiveNewCard();
                     }
-                    RecievedReplacementCards(Players[i]);
+                    if (RecievedReplacementCards != null)
+                        RecievedReplacementCards(Players[i]);
                 }
-                foreach (IPlayer player in Players)
+
+                if (ShowAllHands != null)
                 {
-                    
+                    ShowAllHands();
                 }
-                ShowAllHands();
+
                 gameIsOver = true;
             }
         }

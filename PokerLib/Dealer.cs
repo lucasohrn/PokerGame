@@ -7,8 +7,9 @@ namespace Poker.Lib
     {
         Deck deck = new Deck();
         private IPlayer[] players;
+        private Player player;
         Graveyard graveyard = new Graveyard();
-        
+
         public Dealer(IPlayer[] players)
         {
             this.players = players;

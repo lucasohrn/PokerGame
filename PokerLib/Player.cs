@@ -24,25 +24,13 @@ namespace Poker.Lib
 
         public HandType HandType => handType;
         private HandType handType;
-        /*
-        bool ShouldRecieveCard()
-        {
-            for (int i = 0; i < hand.Length; i++)
-            {
-                if (hand[i] == null)
-                {
-                    return true;
-                }
-            }
-        }
-        */
 
         void GetHandType()
         {
             throw new NotImplementedException();
         }
 
-        void SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
+        public void SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
         {
             var sorted = hand.GroupBy(x => x.Suite).Select(x => new
             {
