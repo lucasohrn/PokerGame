@@ -50,6 +50,73 @@ namespace Poker.Lib
             return true;
         }
 
+        HandType GetHandType()
+        {
+            bool straight = IsStraight(hand);
+            bool allSameSuit = IsAllSameSuit(hand);
+
+            if (straight && allSameSuit)
+            {
+                if ((int)hand[0].Rank == 10)
+                {
+                    return HandType.RoyalStraightFlush;
+                }
+                else
+                    return HandType.StraightFlush;
+            }
+
+            List<int> sameCardSet1, sameCardSet2;
+            FindSetsOfCardsWithSameValue(hand, out sameCardSet1, out sameCardSet2);
+
+            if (sameCardSet1.Count == 4)
+                return HandType.FourOfAKind;
+
+            if (sameCardSet1.Count + sameCardSet2.Count == 5)
+                return HandType.FullHouse;
+
+            if (allSameSuit)
+                return HandType.Flush;
+
+            if(straight)
+                return HandType.Straight;
+
+            if (sameCardSet1.Count == 3)
+                return HandType.ThreeOfAKind;
+
+            if (sameCardSet1.Count + sameCardSet2.Count == 4)
+                return HandType.TwoPairs;
+
+            if (sameCardSet1.Count == 2)
+                return HandType.Pair;
+
+            return HandType.HighCard;
+        }
+
+        bool IsStraight(ICard[] hand)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (hand[i].Rank == hand[i + 1].Rank)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        bool IsAllSameSuit(ICard[] hand)
+        {
+            Suite suite = hand[0].Suite;
+            for (int i = 1; i < hand.Length; i++)
+            {
+                if (suite != hand[i].Suite)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         void FindSetsOfCardsWithSameValue(ICard[] pokerHand, out List<int> sameValueSet1, out List<int> sameValueSet2)
         {
             //Find sets of cards with the same value.
@@ -79,6 +146,7 @@ namespace Poker.Lib
             }
             return sameCardSet;
         }
+        
         private ICard[] HandAfterDiscard(ICard[] value)
         {
             for (int i = 0; i < value.Length; i++)
