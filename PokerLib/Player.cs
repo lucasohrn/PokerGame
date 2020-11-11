@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Poker
+namespace Poker.Lib
 {
     class Player : IPlayer
     {
@@ -24,17 +24,7 @@ namespace Poker
 
         public HandType HandType => handType;
         private HandType handType;
-        void RecieveCard(ICard card)
-        {
-            for (int i = 0; i < hand.Length; i++)
-            {
-                if (hand[i] == null)
-                {
-                    hand[i] = card;
-                    return;
-                }
-            }
-        }
+        public ICard[] Discard { set => HandAfterDiscard(value); }
 
         void SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
         {
@@ -45,11 +35,6 @@ namespace Poker
             }
             ).OrderByDescending(x => x.Count).SelectMany(x => x.Cards);
         }
-
-
-        List<ICard[]> graveYardCards = new List<ICard[]>();
-
-        public ICard[] Discard { set => graveYardCards.Add(value); }
 
         HandType GetHandType()
         {
@@ -147,5 +132,20 @@ namespace Poker
             }
             return sameCardSet;
         }
+        private ICard[] HandAfterDiscard(ICard[] value)
+        {
+            for (int i = 0; i < value.Length; i++)
+            {
+                for (int j = 0; j < hand.Length; j++)
+                {
+                    if (value[i] == hand[j])
+                    {
+                        hand[j] = null;
+                    }
+                }
+            }
+            return hand;
+        }
+
     }
 }
