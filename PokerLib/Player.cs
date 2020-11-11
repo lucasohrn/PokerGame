@@ -24,62 +24,6 @@ namespace Poker.Lib
 
         public HandType HandType => handType;
         private HandType handType;
-<<<<<<< HEAD
-=======
-        public ICard[] Discard { set => HandAfterDiscard(value); }
-
-        void SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
-        {
-            var sorted = hand.GroupBy(x => x.Suite).Select(x => new
-            {
-                Cards = x.OrderByDescending(c => c.Rank),
-                Count = x.Count(),
-            }
-            ).OrderByDescending(x => x.Count).SelectMany(x => x.Cards);
-        }
-
-        HandType GetHandType()
-        {
-            bool straight = IsStraight(hand);
-            bool allSameSuit = IsAllSameSuit(hand);
-
-            if (straight && allSameSuit)
-            {
-                if ((int)hand[0].Rank == 10)
-                {
-                    return HandType.RoyalStraightFlush;
-                }
-                else
-                    return HandType.StraightFlush;
-            }
-
-            List<int> sameCardSet1, sameCardSet2;
-            FindSetsOfCardsWithSameValue(hand, out sameCardSet1, out sameCardSet2);
-
-            if (sameCardSet1.Count == 4)
-                return HandType.FourOfAKind;
-
-            if (sameCardSet1.Count + sameCardSet2.Count == 5)
-                return HandType.FullHouse;
-
-            if (allSameSuit)
-                return HandType.Flush;
-
-            if(straight)
-                return HandType.Straight;
-
-            if (sameCardSet1.Count == 3)
-                return HandType.ThreeOfAKind;
-
-            if (sameCardSet1.Count + sameCardSet2.Count == 4)
-                return HandType.TwoPairs;
-
-            if (sameCardSet1.Count == 2)
-                return HandType.Pair;
-
-            return HandType.HighCard;
-        }
->>>>>>> 3e0e54afd828fd8b5889103be46687163e7af2a3
 
         bool IsStraight(ICard[] hand)
         {
@@ -93,11 +37,7 @@ namespace Poker.Lib
             return false;
         }
 
-<<<<<<< HEAD
-        public void SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
-=======
-        bool IsAllSameSuit(ICard[] hand)
->>>>>>> 3e0e54afd828fd8b5889103be46687163e7af2a3
+        public bool SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
         {
             Suite suite = hand[0].Suite;
             for (int i = 1; i < hand.Length; i++)
@@ -154,5 +94,6 @@ namespace Poker.Lib
             return hand;
         }
 
+        public ICard[] Discard { set => HandAfterDiscard(value); }
     }
 }

@@ -6,11 +6,8 @@ namespace Poker.Lib
     {
         Deck deck = new Deck();
         private IPlayer[] players;
-<<<<<<< HEAD
         private Player player;
         Graveyard graveyard = new Graveyard();
-=======
->>>>>>> 3e0e54afd828fd8b5889103be46687163e7af2a3
 
         public Dealer(IPlayer[] players)
         {
@@ -36,9 +33,9 @@ namespace Poker.Lib
             }
         }
 
-        public void GiveNewCard()
+        public ICard GiveNewCard()
         {
-            deck.DrawTopCard();
+            return deck.DrawTopCard();
         }
     }
 }
