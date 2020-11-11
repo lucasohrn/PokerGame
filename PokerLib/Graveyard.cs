@@ -6,7 +6,7 @@ namespace Poker.Lib
     class Graveyard
     {
         int numberOfCardsInGraveyard;
-        List<ICard> Cards;
+        List<ICard[]> graveYardCards;
 
         private void ReturnCardsFromGY()
         {

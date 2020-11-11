@@ -6,7 +6,6 @@ namespace Poker.Lib
     class Deck
     {
         List<Card> deck = new List<Card>(52);
-        //int numberOfCards;
 
         public Deck()
         {
@@ -25,16 +24,16 @@ namespace Poker.Lib
 
         private static Random rng = new Random();
 
-        public static void Shuffle<T>(List<ICard> list)
+        public void Shuffle()
         {
-            int n = list.Count;
+            int n = deck.Count;
             while (n > 1)
             {
                 n--;
                 int k = rng.Next(n + 1);
-                ICard value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                Card value = deck[k];
+                deck[k] = deck[n];
+                deck[n] = value;
             }
         }
 

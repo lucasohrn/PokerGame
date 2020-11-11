@@ -9,24 +9,24 @@ namespace Poker.Lib
 
         public Dealer(IPlayer[] players)
         {
-           this.players = players;
+            this.players = players;
         }
-        
-        void OnNewDeal()
+
+        public void OnNewDeal()
         {
             //returncards
             //shuffle
-            //Deck.Shuffle(deck.deck);   
-            DealCards();
+            deck.Shuffle();
+            FirstDeal();
         }
 
-        public void DealCards()
+        public void FirstDeal()
         {
-            foreach (IPlayer player in players)
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < players.Length; j++)
                 {
-                  player.Hand[i] = deck.DrawTopCard();
+                    players[j].Hand[i] = deck.DrawTopCard();
                 }
             }
         }

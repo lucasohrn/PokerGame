@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Poker
@@ -49,6 +50,11 @@ namespace Poker
             }
             ).OrderByDescending(x => x.Count).SelectMany(x => x.Cards);
         }
-        public ICard[] Discard { set => throw new NotImplementedException(); }
+
+        
+        List<ICard[]> graveYardCards = new List<ICard[]>();
+
+        public ICard[] Discard { set => graveYardCards.Add(value); }
+
     }
 }

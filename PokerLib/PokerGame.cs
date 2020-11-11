@@ -51,18 +51,15 @@ namespace Poker.Lib
             while (!gameIsOver)
             {
                 NewDeal();
-
+                dealer.OnNewDeal();
+                
                 foreach (IPlayer player in Players)
                 {
                     SelectCardsToDiscard(player);
-                }
-
-                foreach (IPlayer player in Players)
-                {
                     RecievedReplacementCards(player);
                 }
-
                 ShowAllHands();
+                gameIsOver = true;
             }
         }
         public void Exit()
