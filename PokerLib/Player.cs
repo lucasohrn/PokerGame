@@ -27,11 +27,10 @@ namespace Poker.Lib
 
         public void BeforeShowHand()
         {
-            SortCards();
             handType = GetHandType();
         }
 
-        bool SortCards()
+        public bool SortCards()
         {
             Suite suite = hand[0].Suite;
             for (int i = 1; i < hand.Length; i++)
