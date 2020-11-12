@@ -28,9 +28,9 @@ namespace Poker.Lib
         {
             foreach (Card card in graveyard.graveYardCards)
             {
-                Card drawnCard = graveyard.graveYardCards[0];
+                Card cardToReturn = graveyard.graveYardCards[0];
                 graveyard.graveYardCards.RemoveAt(0);
-                // return drawnCard;
+                deck.ReturnCard(cardToReturn);
             }
         }
 

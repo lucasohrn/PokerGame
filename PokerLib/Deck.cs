@@ -49,9 +49,9 @@ namespace Poker.Lib
             Console.WriteLine("Deck is empty");
             throw new Exception();
         }
-        public void ReturnCard(ICard graveyardCards)
+        public void ReturnCard(Card graveyardCards)
         {
-            throw new NotImplementedException();
+            deck.Add(graveyardCards);
         }
     }
 }
