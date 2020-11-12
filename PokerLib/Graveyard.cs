@@ -5,12 +5,6 @@ namespace Poker.Lib
 {
     class Graveyard
     {
-        int numberOfCardsInGraveyard;
-        List<ICard[]> graveYardCards;
-
-        private void ReturnCardsFromGY()
-        {
-            
-        }
+        public List<Card> graveYardCards = new List<Card> (52);
     }
 }

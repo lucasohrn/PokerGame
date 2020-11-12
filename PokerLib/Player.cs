@@ -20,27 +20,21 @@ namespace Poker.Lib
         }
 
         public ICard[] Hand => hand;
-        private ICard[] hand;
+        private Card[] hand;
 
         public HandType HandType => handType;
         private HandType handType;
+
+        public Graveyard graveyard;
 
         public void BeforeShowHand()
         {
             handType = GetHandType();
         }
 
-        public bool SortCards()
+        public void SortCards()
         {
-            Suite suite = hand[0].Suite;
-            for (int i = 1; i < hand.Length; i++)
-            {
-                if (suite != hand[i].Suite)
-                {
-                    return false;
-                }
-            }
-            return true;
+           
         }
 
         HandType GetHandType()
@@ -70,7 +64,7 @@ namespace Poker.Lib
             if (allSameSuit)
                 return HandType.Flush;
 
-            if(straight)
+            if (straight)
                 return HandType.Straight;
 
             if (sameCardSet1.Count == 3)
@@ -89,12 +83,12 @@ namespace Poker.Lib
         {
             for (int i = 0; i < 4; i++)
             {
-                if (hand[i].Rank == hand[i + 1].Rank)
+                if ((int)hand[i].Rank != (int)hand[i + 1].Rank + 1)
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
 
         bool IsAllSameSuit(ICard[] hand)
@@ -139,7 +133,7 @@ namespace Poker.Lib
             }
             return sameCardSet;
         }
-        
+
         public ICard[] Discard { set => HandAfterDiscard(value); }
         private ICard[] HandAfterDiscard(ICard[] value)
         {
@@ -149,12 +143,12 @@ namespace Poker.Lib
                 {
                     if (value[i] == hand[j])
                     {
+                        graveyard.graveYardCards.Add(hand[j]);
                         hand[j] = null;
                     }
                 }
             }
             return hand;
         }
-
     }
 }
