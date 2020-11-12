@@ -27,26 +27,36 @@ namespace Poker.Lib
 
         public void BeforeShowHand()
         {
+            SortCards();
             handType = GetHandType();
         }
 
-        public bool SortCards()
+        public void SortCards()
         {
-            Suite suite = hand[0].Suite;
-            for (int i = 1; i < hand.Length; i++)
+            for (int i = 0; i < hand.Length; i++)
             {
-                if (suite != hand[i].Suite)
+                // Skapar variablen [kortKvar] som tilldelas värdet på antalet kort som INTE är färdigsorterade i handen
+                int kortKvar = hand.Length - 1;
+
+                for (int j = 0; j < kortKvar; j++)   // Loopar igenom alla kort som är kvar i handen
                 {
-                    return false;
+                    int jämförKort = (int)hand[j].Rank - (int)hand[j + 1].Rank;
+                    // Skapar variabeln [jämförKort] som tilldelas ett värde på avståndet mellan korten
+
+                    if (jämförKort > 0)  // OM [jämförKort] är större än 0 ska ett platsbyte ske mellan korten
+                    {
+                        ICard temporär = hand[j];   // variabeln [temporär] tilldelas samma värde som hand[j]
+                        hand[j] = hand[j + 1];      // hand[j] tilldelas samma värde som hand[j + 1]
+                        hand[j + 1] = temporär;     // hand[j+1] tilldelas samma värde som [temporär]
+                    }
                 }
             }
-            return true;
         }
 
         HandType GetHandType()
         {
-            bool straight = IsStraight(hand);
             bool allSameSuit = IsAllSameSuit(hand);
+            bool straight = IsStraight(hand);
 
             if (straight && allSameSuit)
             {
@@ -70,7 +80,7 @@ namespace Poker.Lib
             if (allSameSuit)
                 return HandType.Flush;
 
-            if(straight)
+            if (straight)
                 return HandType.Straight;
 
             if (sameCardSet1.Count == 3)
@@ -87,14 +97,15 @@ namespace Poker.Lib
 
         bool IsStraight(ICard[] hand)
         {
+            int rankValue = (int)hand[0].Rank;
             for (int i = 0; i < 4; i++)
             {
-                if (hand[i].Rank == hand[i + 1].Rank)
+                if (rankValue + 1 != (int)hand[i + 1].Rank)
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
 
         bool IsAllSameSuit(ICard[] hand)
@@ -139,7 +150,7 @@ namespace Poker.Lib
             }
             return sameCardSet;
         }
-        
+
         public ICard[] Discard { set => HandAfterDiscard(value); }
         private ICard[] HandAfterDiscard(ICard[] value)
         {
