@@ -55,7 +55,6 @@ namespace Poker.Lib
                             hand[j + 1] = temporär;
                         }
                     }
-
                     else if (jämförRank > 0)  // OM [jämförKort] är större än 0 ska ett platsbyte ske mellan korten
                     {
                         Card temporär = hand[j];   // variabeln [temporär] tilldelas samma värde som hand[j]

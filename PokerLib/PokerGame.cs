@@ -66,23 +66,38 @@ namespace Poker.Lib
                         if (Players[i].Hand[j] == null)
                             Players[i].Hand[j] = dealer.GiveNewCard();
                     }
-                    
-                    players[i].BeforeShowHand();
-                    
-                    if (RecievedReplacementCards != null)
-                        RecievedReplacementCards(Players[i]); 
 
-                    
+                    players[i].BeforeShowHand();
+
+                    if (RecievedReplacementCards != null)
+                        RecievedReplacementCards(Players[i]);
                 }
-                
+
                 if (ShowAllHands != null)
                 {
                     ShowAllHands();
                 }
+
+                Player[] winners = dealer.Declarewinner();
+                if (winners.Length == 1)
+                {
+                    if (Winner != null)
+                    {
+                        Winner(winners[0]);
+                    }
+                }
+                else
+                {
+                    if (Draw != null)
+                    {
+                        Draw(winners);
+                    }
+                }
+
                 gameIsOver = true;
             }
         }
-        
+
         public void Exit()
         {
             while (true)

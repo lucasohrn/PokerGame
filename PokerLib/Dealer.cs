@@ -34,6 +34,38 @@ namespace Poker.Lib
             }
         }
 
+        public Player[] Declarewinner()
+        {
+            Player[] winners = new Player[5];
+            
+               
+                    int spelareKvar = players.Length - 1;
+                    for (int j = 0; j < spelareKvar; j++)
+                    {
+                        int jämförHandType = (int)players[j].HandType - (int)players[j + 1].HandType;
+                        if (jämförHandType > 0)
+                        {
+                            for (int k = 0; k < winners.Length; k++)
+                            {
+                                winners[k] = null;
+                            }
+                            winners[0] = players[j];
+                        }
+                        else if (jämförHandType == 0)
+                        {
+                            for (int l = 0; l < winners.Length; l++)
+                            {
+                                if (winners[l] == null)
+                                {
+                                    winners[l] = players[j];
+                                    break;
+                                }
+                            }
+                        }  
+                }
+                return winners;        
+        }
+
         public void FirstDeal()
         {
             for (int i = 0; i < 5; i++)
