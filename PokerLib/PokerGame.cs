@@ -56,6 +56,8 @@ namespace Poker.Lib
 
                 for (int i = 0; i < Players.Length; i++)
                 {
+                    players[i].SortCards();
+
                     if (SelectCardsToDiscard != null)
                         SelectCardsToDiscard(Players[i]);
 
