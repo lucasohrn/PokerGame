@@ -40,10 +40,21 @@ namespace Poker.Lib
 
                 for (int j = 0; j < kortKvar; j++)   // Loopar igenom alla kort som är kvar i handen
                 {
-                    int jämförKort = (int)hand[j].Rank - (int)hand[j + 1].Rank;
+                    int jämförRank = (int)hand[j].Rank - (int)hand[j + 1].Rank;
                     // Skapar variabeln [jämförKort] som tilldelas ett värde på avståndet mellan korten
+                    if (jämförRank == 0)
+                    {
+                        int jämförSuit = (int)hand[j].Suite - (int)hand[j + 1].Suite;
 
-                    if (jämförKort > 0)  // OM [jämförKort] är större än 0 ska ett platsbyte ske mellan korten
+                        if (jämförSuit > 0)
+                        {
+                            ICard temporär = hand[j];
+                            hand[j] = hand[j + 1];
+                            hand[j + 1] = temporär;
+                        }
+                    }
+
+                    else if (jämförRank > 0)  // OM [jämförKort] är större än 0 ska ett platsbyte ske mellan korten
                     {
                         ICard temporär = hand[j];   // variabeln [temporär] tilldelas samma värde som hand[j]
                         hand[j] = hand[j + 1];      // hand[j] tilldelas samma värde som hand[j + 1]
