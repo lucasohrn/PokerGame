@@ -7,12 +7,12 @@ namespace Poker.Lib
 {
     public class PokerGame : IPokerGame
     {
-        private IPlayer[] players;
+        private Player[] players;
         public IPlayer[] Players => players;
 
         public PokerGame(string[] players) //skapar ett nytt spelar object för varje namn angivet
         {
-            this.players = new IPlayer[players.Length];
+            this.players = new Player[players.Length];
             for (int i = 0; i < players.Length; i++)
             {
                 this.players[i] = new Player(players[i], 0);
@@ -24,8 +24,8 @@ namespace Poker.Lib
             if (File.Exists(fileName))
             {
                 string json = File.ReadAllText(fileName);
-                List<IPlayer> players = JsonConvert.DeserializeObject<List<IPlayer>>(json);
-                this.players = new IPlayer[players.Count];
+                List<Player> players = JsonConvert.DeserializeObject<List<Player>>(json);
+                this.players = new Player[players.Count];
                 this.players = players.ToArray();
             }
             else
@@ -53,6 +53,7 @@ namespace Poker.Lib
                     NewDeal();
 
                 dealer.OnNewDeal();
+
                 for (int i = 0; i < Players.Length; i++)
                 {
                     if (SelectCardsToDiscard != null)
@@ -65,17 +66,18 @@ namespace Poker.Lib
                     }
                     
                     if (RecievedReplacementCards != null)
-                        RecievedReplacementCards(Players[i]);
-                }
+                        RecievedReplacementCards(Players[i]); 
 
+                    players[i].BeforeShowHand();
+                }
+                
                 if (ShowAllHands != null)
                 {
                     ShowAllHands();
                 }
-
-                gameIsOver = true;
             }
         }
+        
         public void Exit()
         {
             while (true)

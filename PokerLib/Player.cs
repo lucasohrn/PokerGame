@@ -25,7 +25,13 @@ namespace Poker.Lib
         public HandType HandType => handType;
         private HandType handType;
 
-        public bool SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
+        public void BeforeShowHand()
+        {
+            SortCards();
+            handType = GetHandType();
+        }
+
+        bool SortCards()
         {
             Suite suite = hand[0].Suite;
             for (int i = 1; i < hand.Length; i++)
@@ -113,18 +119,18 @@ namespace Poker.Lib
             sameValueSet2 = FindSetsOfCardsWithSameValue_Helper(pokerHand, ref index);
         }
 
-        List<int> FindSetsOfCardsWithSameValue_Helper(ICard[] pokerHand_ArrangedCorrectly, ref int index)
+        List<int> FindSetsOfCardsWithSameValue_Helper(ICard[] pokerHand, ref int index)
         {
             List<int> sameCardSet = new List<int>();
             for (; index < 4; index++)
             {
-                int currentCard_intValue = (int)pokerHand_ArrangedCorrectly[index].Rank;
-                int nextCard_intValue = (int)pokerHand_ArrangedCorrectly[index + 1].Rank;
-                if (currentCard_intValue == nextCard_intValue)
+                int intCard = (int)pokerHand[index].Rank;
+                int intNextCard = (int)pokerHand[index + 1].Rank;
+                if (intCard == intNextCard)
                 {
                     if (sameCardSet.Count == 0)
-                        sameCardSet.Add(currentCard_intValue);
-                    sameCardSet.Add(currentCard_intValue);
+                        sameCardSet.Add(intCard);
+                    sameCardSet.Add(intCard);
                 }
                 else if (sameCardSet.Count > 0)
                 {
@@ -135,6 +141,7 @@ namespace Poker.Lib
             return sameCardSet;
         }
         
+        public ICard[] Discard { set => HandAfterDiscard(value); }
         private ICard[] HandAfterDiscard(ICard[] value)
         {
             for (int i = 0; i < value.Length; i++)
@@ -150,6 +157,5 @@ namespace Poker.Lib
             return hand;
         }
 
-        public ICard[] Discard { set => HandAfterDiscard(value); }
     }
 }
