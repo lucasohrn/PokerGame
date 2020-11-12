@@ -25,18 +25,6 @@ namespace Poker.Lib
         public HandType HandType => handType;
         private HandType handType;
 
-        bool IsStraight(ICard[] hand)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                if (hand[i].Rank == hand[i + 1].Rank)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         public bool SortCards() // inte testad ska kunna sortera men stor möjlighet att den sorterar fel, jag kan inte linq
         {
             Suite suite = hand[0].Suite;
