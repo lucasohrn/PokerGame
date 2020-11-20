@@ -9,8 +9,8 @@ namespace Poker.Lib
         public string Name => name;
         private string name;
 
-        public int Wins => wins;
-        public int wins;
+        public int Wins { get; set; }
+        private int wins;
 
         public Player(string playerName, int playerWins)
         {

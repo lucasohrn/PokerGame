@@ -83,8 +83,8 @@ namespace Poker.Lib
                 {
                     if (Winner != null)
                     {
+                        winners[0].Wins += 1;
                         Winner(winners[0]);
-                        winners[0].wins += 1;
                     }
                 }
                 else
@@ -92,42 +92,14 @@ namespace Poker.Lib
                     if (Draw != null)
                     {
                         Draw(winners.ToArray());
-                        foreach (Player winner in winners)
-                        {
-                            winner.wins += 1;
-                        }
                     }
                 }
-
-                gameIsOver = true;
             }
         }
 
         public void Exit()
         {
-            while (true)
-            {
-                Console.WriteLine("Vill du spara spelet? J/N");
-                string input = Console.ReadLine().ToLower();
-
-                if (input == "j")
-                {
-                    while (true)
-                    {
-                        Console.WriteLine("Vad ska din sparfil heta?");
-                        string fileName = Console.ReadLine().ToLower();
-
-                        if (fileName != null)
-                        {
-                            SaveGameAndExit(fileName);
-                        }
-                    }
-                }
-                else if (input == "n")
-                {
-                    Environment.Exit(0);
-                }
-            }
+            Environment.Exit(0);
         }
         public void SaveGameAndExit(string fileName)
         {
