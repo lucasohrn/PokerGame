@@ -37,22 +37,22 @@ namespace Poker.Lib
         public List<Player> Declarewinner()
         {
             List<Player> winners = new List<Player>();
-            int players = this.players.Length - 1;
-            int highestHand = 0;
-            highestHand = (int)this.players[0].HandType;
+
+            int highestHand = (int)this.players[0].HandType;
             winners.Add(this.players[0]);
 
-            for (int j = 0; j < players; j++)
+            for (int j = 1; j < players.Length; j++)
             {
-                int handValue = (int)this.players[j + 1].HandType - highestHand;
+                int handValue = (int)this.players[j].HandType - highestHand;
                 if (handValue > 0)
                 {
                     winners.Clear();
-                    winners.Add(this.players[j+1]);
+                    winners.Add(this.players[j]);
+                    highestHand = (int)this.players[j].HandType;
                 }
                 else if (handValue == 0)
                 {
-                    winners.Add(this.players[j+1]);
+                    winners.Add(this.players[j]);
                 }
             }
             return winners;
