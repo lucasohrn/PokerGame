@@ -15,7 +15,7 @@ namespace Poker.ConsoleApp
             while (true)
             {
                 string playerName = RegisterPlayer();
-                if (playerName == null || playerNames.Count == 5)
+                if (playerNames.Count != 0 && playerName == null || playerNames.Count == 5)
                 {
                     break;
                 }
