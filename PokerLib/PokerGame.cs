@@ -78,8 +78,8 @@ namespace Poker.Lib
                     ShowAllHands();
                 }
 
-                Player[] winners = dealer.Declarewinner();
-                if (winners.Length == 1)
+                List<Player> winners = dealer.Declarewinner();
+                if (winners.Count == 1)
                 {
                     if (Winner != null)
                     {
@@ -90,7 +90,7 @@ namespace Poker.Lib
                 {
                     if (Draw != null)
                     {
-                        Draw(winners);
+                        Draw(winners.ToArray());
                     }
                 }
 
