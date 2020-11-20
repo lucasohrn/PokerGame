@@ -34,32 +34,23 @@ namespace Poker.Lib
             }
         }
 
-        public Player[] Declarewinner()
+        public List<Player> Declarewinner()
         {
-            Player[] winners = new Player[5];
-
-            int spelareKvar = players.Length - 1;
-            for (int j = 0; j < spelareKvar; j++)
+            List<Player> winners = new List<Player>();
+            int players = this.players.Length - 1;
+            int highestHand = 0;
+            highestHand = (int)this.players[0].HandType;
+            for (int j = 0; j < players; j++)
             {
-                int jämförHandType = (int)players[j].HandType - (int)players[j + 1].HandType;
-                if (jämförHandType > 0)
+                int handValue = highestHand - (int)this.players[j + 1].HandType;
+                if (handValue > 0)
                 {
-                    for (int k = 0; k < winners.Length; k++)
-                    {
-                        winners[k] = null;
-                    }
-                    winners[0] = players[j];
+                    winners.Clear();
+                    winners.Add(this.players[j]);
                 }
-                else if (jämförHandType == 0)
+                else if (handValue == 0)
                 {
-                    for (int l = 0; l < winners.Length; l++)
-                    {
-                        if (winners[l] == null)
-                        {
-                            winners[l] = players[j];
-                            break;
-                        }
-                    }
+                    winners.Add(this.players[j]);
                 }
             }
             return winners;
