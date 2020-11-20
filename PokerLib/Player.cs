@@ -116,6 +116,7 @@ namespace Poker.Lib
                 {
                     return false;
                 }
+                rankValue++;
             }
             return true;
         }

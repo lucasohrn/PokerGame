@@ -46,7 +46,7 @@ namespace Poker.Lib
                 return firstCard;
             }
 
-            Console.WriteLine("Deck is empty");
+            Console.WriteLine("Deck is empty"); // Kasta exeption ej korrekt
             throw new Exception();
         }
         public void ReturnCard(Card graveyardCards)
