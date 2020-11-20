@@ -83,23 +83,21 @@ namespace Poker.Lib
                 {
                     if (Winner != null)
                     {
-                        Winner(winners[0]);
                         winners[0].Wins += 1;
+                        Winner(winners[0]);
                     }
                 }
                 else
                 {
                     if (Draw != null)
                     {
-                        Draw(winners.ToArray());
                         foreach (Player winner in winners)
                         {
                             winner.Wins += 1;
                         }
+                        Draw(winners.ToArray());
                     }
                 }
-
-                gameIsOver = true;
             }
         }
 
