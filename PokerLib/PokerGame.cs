@@ -91,10 +91,6 @@ namespace Poker.Lib
                 {
                     if (Draw != null)
                     {
-                        foreach (Player winner in winners)
-                        {
-                            winner.Wins += 1;
-                        }
                         Draw(winners.ToArray());
                     }
                 }
@@ -103,29 +99,7 @@ namespace Poker.Lib
 
         public void Exit()
         {
-            while (true)
-            {
-                Console.WriteLine("Vill du spara spelet? J/N");
-                string input = Console.ReadLine().ToLower();
-
-                if (input == "j")
-                {
-                    while (true)
-                    {
-                        Console.WriteLine("Vad ska din sparfil heta?");
-                        string fileName = Console.ReadLine().ToLower();
-
-                        if (fileName != null)
-                        {
-                            SaveGameAndExit(fileName);
-                        }
-                    }
-                }
-                else if (input == "n")
-                {
-                    Environment.Exit(0);
-                }
-            }
+            Environment.Exit(0);
         }
         public void SaveGameAndExit(string fileName)
         {
