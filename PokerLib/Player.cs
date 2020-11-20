@@ -10,7 +10,7 @@ namespace Poker.Lib
         private string name;
 
         public int Wins => wins;
-        private int wins;
+        public int wins;
 
         public Player(string playerName, int playerWins)
         {

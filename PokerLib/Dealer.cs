@@ -40,17 +40,19 @@ namespace Poker.Lib
             int players = this.players.Length - 1;
             int highestHand = 0;
             highestHand = (int)this.players[0].HandType;
+            winners.Add(this.players[0]);
+
             for (int j = 0; j < players; j++)
             {
-                int handValue = highestHand - (int)this.players[j + 1].HandType;
+                int handValue = (int)this.players[j + 1].HandType - highestHand;
                 if (handValue > 0)
                 {
                     winners.Clear();
-                    winners.Add(this.players[j]);
+                    winners.Add(this.players[j+1]);
                 }
                 else if (handValue == 0)
                 {
-                    winners.Add(this.players[j]);
+                    winners.Add(this.players[j+1]);
                 }
             }
             return winners;

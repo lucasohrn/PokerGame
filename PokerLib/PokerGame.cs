@@ -84,6 +84,7 @@ namespace Poker.Lib
                     if (Winner != null)
                     {
                         Winner(winners[0]);
+                        winners[0].wins += 1;
                     }
                 }
                 else
@@ -91,6 +92,10 @@ namespace Poker.Lib
                     if (Draw != null)
                     {
                         Draw(winners.ToArray());
+                        foreach (Player winner in winners)
+                        {
+                            winner.wins += 1;
+                        }
                     }
                 }
 
