@@ -177,6 +177,10 @@ namespace Poker.Lib
                     }
                 }
             }
+            foreach (Card card in hand) // lägger till en kopia av handen som overwritas i slutet av ens tur till graveyarden
+            {
+                graveyard.graveYardCards.Add(card);
+            }
             return hand;
         }
     }
