@@ -28,10 +28,11 @@ namespace Poker.Lib
         {
             foreach (Card card in graveyard.graveYardCards)
             {
-                Card cardToReturn = graveyard.graveYardCards[0];
-                graveyard.graveYardCards.RemoveAt(0);
-                deck.ReturnCard(cardToReturn);
+                //Card cardToReturn = graveyard.graveYardCards[0];
+                //graveyard.graveYardCards.RemoveAt(0);
+                deck.ReturnCard(card);
             }
+            graveyard.graveYardCards.Clear();
         }
 
         public List<Player> Declarewinner()

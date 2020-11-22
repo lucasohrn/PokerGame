@@ -24,14 +24,15 @@ namespace Poker.Lib
             if (File.Exists(fileName))
             {
                 string json = File.ReadAllText(fileName);
-                List<Player> players = JsonConvert.DeserializeObject<List<Player>>(json);
-                this.players = new Player[players.Count];
-                this.players = players.ToArray();
-            }
-            else
-            {
-                Console.Write($"The file \"{fileName}\" does not exist");
-                //implomentera så man kan testa en annan fil eller starta nytt spel
+                string[] data = json.Split(' ');
+                string[] names = JsonConvert.DeserializeObject<String[]>(data[0]);
+                int[] wins = JsonConvert.DeserializeObject<int[]>(data[1]);
+                
+                this.players = new Player[names.Length];
+                for (int i = 0; i < names.Length; i++)
+                {
+                    this.players[i] = new Player(names[i], wins[i]);   
+                }
             }
         }
 
@@ -103,8 +104,22 @@ namespace Poker.Lib
         }
         public void SaveGameAndExit(string fileName)
         {
-            string json = JsonConvert.SerializeObject(players);
+            string[] names;
+            int[] wins;
+
+            names = new string[players.Length];
+            wins = new int[players.Length];
+
+            for (int i = 0; i < players.Length; i++)
+            {
+                names[i] = players[i].Name;
+                wins[i] = players[i].Wins;
+            }
+     
+            string json = JsonConvert.SerializeObject(names);
+            json += (" " + JsonConvert.SerializeObject(wins));
             File.WriteAllText(fileName, json);
+            Console.WriteLine("Spelet har sparats");
             Environment.Exit(0);
         }
     }

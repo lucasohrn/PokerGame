@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Poker.Lib
 {
@@ -10,12 +11,11 @@ namespace Poker.Lib
         private string name;
 
         public int Wins { get; set; }
-        private int wins;
 
         public Player(string playerName, int playerWins)
         {
             name = playerName;
-            wins = playerWins;
+            Wins = playerWins;
             hand = new Card[5];
         }
 
@@ -177,6 +177,10 @@ namespace Poker.Lib
                         hand[j] = null;
                     }
                 }
+            }
+            foreach (Card card in hand) // lägger till en kopia av handen som overwritas i slutet av ens tur till graveyarden
+            {
+                graveyard.graveYardCards.Add(card);
             }
             return hand;
         }
