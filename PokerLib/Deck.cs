@@ -6,7 +6,6 @@ namespace Poker.Lib
     class Deck
     {
         List<Card> deck = new List<Card>(52);
-
         public Deck()
         {
             for (int i = 0; i < 13; i++)
@@ -49,9 +48,16 @@ namespace Poker.Lib
             Console.WriteLine("Deck is empty"); // Kasta exeption ej korrekt
             throw new Exception();
         }
-        public void ReturnCard(Card graveyardCards)
+        public void ReturnCard(Player[] players)
         {
-            deck.Add(graveyardCards);
+            for (int i = 0; i < players.Length; i++)
+            {
+                for (int j = 0; j < players[i].graveyard.graveYardCards.Count; j++)
+                {
+                    deck.Add(players[i].graveyard.graveYardCards[j]);
+                }
+                players[i].graveyard.graveYardCards.Clear();
+            }
         }
     }
 }

@@ -67,7 +67,6 @@ namespace Poker.Lib
                         if (Players[i].Hand[j] == null)
                             Players[i].Hand[j] = dealer.GiveNewCard();
                     }
-
                     players[i].BeforeShowHand();
 
                     if (RecievedReplacementCards != null)

@@ -26,12 +26,8 @@ namespace Poker.Lib
         }
         void Returncards()
         {
-            foreach (Card card in graveyard.graveYardCards)
-            {
-                //Card cardToReturn = graveyard.graveYardCards[0];
-                //graveyard.graveYardCards.RemoveAt(0);
-                deck.ReturnCard(card);
-            }
+            deck.ReturnCard(players);
+
             graveyard.graveYardCards.Clear();
         }
 
