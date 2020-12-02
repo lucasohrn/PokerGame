@@ -106,5 +106,43 @@ namespace PokerLib.UnitTest
             player.BeforeShowHand();
             Assert.IsTrue(player.HandType == Poker.HandType.FullHouse);
         }
+
+        [Test, Combinatorial]
+        public void CanEvaluateTwoPairs([Values(2, 3, 4)] int irellevantCard, [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int firstRank,
+        [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int secondRank)
+        {
+            Card[] cards = new Card[5];
+            Player player = new Poker.Lib.Player("", 1);
+
+            for (int i = 0; i < 5; ++i)
+            {
+                Assume.That(firstRank != secondRank);
+
+                if (i == 0 || i == 1)
+                {
+                    cards[i] = new Card((Suite)0, (Rank)(firstRank));
+                }
+                else if (i == 2 || i == 3)
+                {
+                    cards[i] = new Card((Suite)1, (Rank)(secondRank));
+                }
+                else
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (irellevantCard != firstRank && irellevantCard != secondRank)
+                        {
+                            cards[i] = new Card((Suite)1, (Rank)(irellevantCard));
+                            break;
+                        }
+                        irellevantCard++;
+                    }
+                }
+                player.Hand[i] = cards[i];
+            }
+            player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
+            player.BeforeShowHand();
+            Assert.IsTrue(player.HandType == Poker.HandType.TwoPairs);
+        }
     }
 }
