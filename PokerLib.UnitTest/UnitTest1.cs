@@ -50,7 +50,7 @@ namespace PokerLib.UnitTest
         }
 
         [Test, Combinatorial]
-        public void CanEvaluateFourOfAKind([Values(0, 1, 2, 3, 4, 5)] int irellevantCard,
+        public void CanEvaluateFourOfAKind([Values(0, 1, 2, 3, 4)] int irellevantCard,
         [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int rank)
         {
             Card[] cards = new Card[5];
@@ -79,6 +79,32 @@ namespace PokerLib.UnitTest
             player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
             player.BeforeShowHand();
             Assert.IsTrue(player.HandType == Poker.HandType.FourOfAKind);
+        }
+
+        [Test, Combinatorial]
+        public void CanEvaluateFullhouse([Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int firstRank,
+        [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int secondRank)
+        {
+            Card[] cards = new Card[5];
+            Player player = new Poker.Lib.Player("", 1);
+
+            for (int i = 0; i < 5; ++i)
+            {
+                Assume.That(firstRank != secondRank);
+
+                if (i < 3)
+                {
+                    cards[i] = new Card((Suite)0, (Rank)(firstRank));
+                }
+                else
+                {
+                    cards[i] = new Card((Suite)0, (Rank)(secondRank));
+                }
+                player.Hand[i] = cards[i];
+            }
+            player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
+            player.BeforeShowHand();
+            Assert.IsTrue(player.HandType == Poker.HandType.FullHouse);
         }
     }
 }
