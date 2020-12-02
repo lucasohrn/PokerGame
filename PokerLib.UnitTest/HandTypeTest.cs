@@ -106,5 +106,102 @@ namespace PokerLib.UnitTest
             player.BeforeShowHand();
             Assert.IsTrue(player.HandType == Poker.HandType.FullHouse);
         }
+
+        [Test, Combinatorial]
+        public void CanEvaluateStraight([Values(2, 3, 4, 5, 6, 7, 8, 9)] int rank, [Values(0, 1, 2, 3, 4)] int oddColor)
+        {
+            //A royal straight flush is a hand that contains five cards of sequential rank, all of the same suit
+            Card[] cards = new Card[5];
+            Player player = new Poker.Lib.Player("", 1);
+
+            for (int i = 0; i < 5; ++i)
+            {
+                if (i == oddColor)
+                {
+                    cards[i] = new Card((Suite)1, (Rank)(i + rank));
+                    player.Hand[i] = cards[i];
+                    continue;
+                }
+
+                cards[i] = new Card((Suite)0, (Rank)(i + rank));
+                player.Hand[i] = cards[i];
+            }
+
+            player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
+            player.BeforeShowHand();
+            Assert.IsTrue(player.HandType == Poker.HandType.Straight);
+        }
+
+        [Test, Combinatorial]
+        public void CanEvaluatethreeOfAKind([Values(0, 1, 2, 3, 4)] int irellevantCard, [Values(0, 1, 2, 3, 4)] int irellevantCard2,
+        [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int rank)
+        {
+            Assume.That(irellevantCard != irellevantCard2);
+
+            Card[] cards = new Card[5];
+            Player player = new Poker.Lib.Player("", 1);
+
+            for (int i = 0; i < 5; ++i)
+            {
+                if (i == irellevantCard)
+                {
+                    if (rank == 2)
+                    {
+                        cards[i] = new Card((Suite)0, (Rank)(rank + 1));
+                    }
+                    else
+                    {
+                        cards[i] = new Card((Suite)0, (Rank)(rank - 1));
+                    }
+                    player.Hand[i] = cards[i];
+                    continue;
+                }
+
+                cards[i] = new Card((Suite)0, (Rank)(rank));
+                player.Hand[i] = cards[i];
+            }
+
+            player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
+            player.BeforeShowHand();
+            Assert.IsTrue(player.HandType == Poker.HandType.FourOfAKind);
+        }
+
+        [Test, Combinatorial]
+        public void CanEvaluateTwoPair([Values(0, 1, 2, 3, 4)] int irellevantCard, [Values(0, 1, 2, 3, 4)] int irellevantCardRank,
+        [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int rank, [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int rank2)
+        {
+            Assume.That(rank != rank2);
+            Assume.That(irellevantCardRank != rank);
+            Assume.That(irellevantCardRank != rank2);
+
+            Card[] cards = new Card[5];
+            Player player = new Poker.Lib.Player("", 1);
+
+            int counter = 0;
+            for (int i = 0; i < 5; ++i)
+            {
+                if (i == irellevantCard)
+                {
+                    cards[i] = new Card((Suite)1, (Rank)(irellevantCardRank));
+                    player.Hand[i] = cards[i];
+                    continue;
+                }
+
+                if (counter < 2)
+                {
+                    cards[i] = new Card((Suite)0, (Rank)(rank));
+                    player.Hand[i] = cards[i];
+                }
+                else
+                {
+                    cards[i] = new Card((Suite)0, (Rank)(rank2));
+                    player.Hand[i] = cards[i];
+                }
+            }
+
+            player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
+            player.BeforeShowHand();
+            Assert.IsTrue(player.HandType == Poker.HandType.FourOfAKind);
+        }
     }
 }
