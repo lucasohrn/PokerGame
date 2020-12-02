@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
+[assembly:InternalsVisibleTo("PokerLib.UnitTest")]
 
 namespace Poker.Lib
 {
@@ -83,7 +85,9 @@ namespace Poker.Lib
                     return HandType.RoyalStraightFlush;
                 }
                 else
+                {
                     return HandType.StraightFlush;
+                }
             }
 
             List<int> sameCardSet1, sameCardSet2;
