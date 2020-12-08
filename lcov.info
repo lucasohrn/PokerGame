@@ -1,17 +1,17 @@
 SF:C:\Users\Sixten\Desktop\Källkodsarkiv\Poker Test\Poker\PokerLib\Card.cs
 FN:15,Poker.Suite Poker.Lib.Card::get_Suite()
-FNDA:180,Poker.Suite Poker.Lib.Card::get_Suite()
-DA:16,180
+FNDA:224167,Poker.Suite Poker.Lib.Card::get_Suite()
+DA:16,224167
 FN:16,Poker.Rank Poker.Lib.Card::get_Rank()
-FNDA:1656,Poker.Rank Poker.Lib.Card::get_Rank()
-DA:17,1656
+FNDA:549470,Poker.Rank Poker.Lib.Card::get_Rank()
+DA:17,549470
 FN:9,System.Void Poker.Lib.Card::.ctor(Poker.Suite,Poker.Rank)
-FNDA:180,System.Void Poker.Lib.Card::.ctor(Poker.Suite,Poker.Rank)
-DA:10,180
-DA:11,180
-DA:12,180
-DA:13,180
-DA:14,180
+FNDA:54790,System.Void Poker.Lib.Card::.ctor(Poker.Suite,Poker.Rank)
+DA:10,54790
+DA:11,54790
+DA:12,54790
+DA:13,54790
+DA:14,54790
 LF:7
 LH:7
 BRF:0
@@ -201,8 +201,8 @@ FNH:0
 end_of_record
 SF:C:\Users\Sixten\Desktop\Källkodsarkiv\Poker Test\Poker\PokerLib\Graveyard.cs
 FN:7,System.Void Poker.Lib.Graveyard::.ctor()
-FNDA:36,System.Void Poker.Lib.Graveyard::.ctor()
-DA:8,36
+FNDA:10958,System.Void Poker.Lib.Graveyard::.ctor()
+DA:8,10958
 LF:1
 LH:1
 BRF:0
@@ -218,180 +218,180 @@ FN:14,System.Int32 Poker.Lib.Player::get_Wins()
 FNDA:0,System.Int32 Poker.Lib.Player::get_Wins()
 DA:15,0
 FN:23,Poker.ICard[] Poker.Lib.Player::get_Hand()
-FNDA:180,Poker.ICard[] Poker.Lib.Player::get_Hand()
-DA:24,180
+FNDA:54790,Poker.ICard[] Poker.Lib.Player::get_Hand()
+DA:24,54790
 FN:26,Poker.HandType Poker.Lib.Player::get_HandType()
-FNDA:36,Poker.HandType Poker.Lib.Player::get_HandType()
-DA:27,36
+FNDA:10958,Poker.HandType Poker.Lib.Player::get_HandType()
+DA:27,10958
 FN:32,System.Void Poker.Lib.Player::BeforeShowHand()
-FNDA:36,System.Void Poker.Lib.Player::BeforeShowHand()
-DA:33,36
-DA:34,36
-DA:35,36
-DA:37,468
-DA:38,180
-DA:39,180
-DA:40,180
-DA:41,180
-DA:42,36
-BRDA:37,72,1,180
-BRDA:39,43,0,180
-BRDA:39,43,1,180
-BRDA:37,72,0,36
+FNDA:10958,System.Void Poker.Lib.Player::BeforeShowHand()
+DA:33,10958
+DA:34,10958
+DA:35,10958
+DA:37,142454
+DA:38,54790
+DA:39,54790
+DA:40,54790
+DA:41,54790
+DA:42,10958
+BRDA:37,72,1,54790
+BRDA:39,43,0,54790
+BRDA:39,43,1,54790
+BRDA:37,72,0,10958
 FN:44,System.Void Poker.Lib.Player::SortCards()
-FNDA:36,System.Void Poker.Lib.Player::SortCards()
-DA:45,36
-DA:46,432
-DA:47,180
-DA:49,180
-DA:51,1800
-DA:52,720
-DA:53,720
-DA:55,720
-DA:56,0
-DA:57,0
-DA:59,0
+FNDA:10958,System.Void Poker.Lib.Player::SortCards()
+DA:45,10958
+DA:46,131496
+DA:47,54790
+DA:49,54790
+DA:51,547900
+DA:52,219160
+DA:53,219160
+DA:55,219160
+DA:56,94348
+DA:57,94348
+DA:59,94348
 DA:60,0
 DA:61,0
 DA:62,0
 DA:63,0
 DA:64,0
-DA:65,0
-DA:66,720
-DA:67,0
-DA:68,0
-DA:69,0
-DA:70,0
-DA:71,0
-DA:72,720
-DA:73,180
-DA:74,36
-BRDA:46,246,1,180
-BRDA:51,221,1,720
-BRDA:55,66,0,0
+DA:65,94348
+DA:66,124812
+DA:67,43224
+DA:68,43224
+DA:69,43224
+DA:70,43224
+DA:71,43224
+DA:72,219160
+DA:73,54790
+DA:74,10958
+BRDA:46,246,1,54790
+BRDA:51,221,1,219160
+BRDA:55,66,0,94348
 BRDA:59,109,0,0
-BRDA:59,109,1,0
-BRDA:55,66,1,720
-BRDA:66,164,0,0
-BRDA:66,164,1,720
-BRDA:51,221,0,180
-BRDA:46,246,0,36
+BRDA:59,109,1,94348
+BRDA:55,66,1,124812
+BRDA:66,164,0,43224
+BRDA:66,164,1,219160
+BRDA:51,221,0,54790
+BRDA:46,246,0,10958
 FN:76,Poker.HandType Poker.Lib.Player::GetHandType()
-FNDA:36,Poker.HandType Poker.Lib.Player::GetHandType()
-DA:77,36
-DA:78,36
-DA:79,36
-DA:81,36
+FNDA:10958,Poker.HandType Poker.Lib.Player::GetHandType()
+DA:77,10958
+DA:78,10958
+DA:79,10958
+DA:81,10958
 DA:82,36
 DA:83,36
 DA:84,4
 DA:85,4
 DA:88,32
 DA:89,32
-DA:94,0
-DA:96,0
-DA:97,0
-DA:99,0
-DA:100,0
-DA:102,0
+DA:94,10922
+DA:96,10922
+DA:97,325
+DA:99,10597
+DA:100,156
+DA:102,10441
 DA:103,0
-DA:105,0
-DA:106,0
-DA:108,0
+DA:105,10441
+DA:106,40
+DA:108,10401
 DA:109,0
-DA:111,0
-DA:112,0
-DA:114,0
-DA:115,0
-DA:117,0
-DA:118,36
+DA:111,10401
+DA:112,10140
+DA:114,261
+DA:115,260
+DA:117,1
+DA:118,10958
 BRDA:81,42,0,36
 BRDA:83,66,0,4
 BRDA:83,66,1,32
-BRDA:81,42,1,0
-BRDA:96,121,0,0
-BRDA:96,121,1,0
-BRDA:99,148,0,0
-BRDA:99,148,1,0
+BRDA:81,42,1,10922
+BRDA:96,121,0,325
+BRDA:96,121,1,10597
+BRDA:99,148,0,156
+BRDA:99,148,1,10441
 BRDA:102,160,0,0
-BRDA:102,160,1,0
-BRDA:105,172,0,0
-BRDA:105,172,1,0
+BRDA:102,160,1,10441
+BRDA:105,172,0,40
+BRDA:105,172,1,10401
 BRDA:108,192,0,0
-BRDA:108,192,1,0
-BRDA:111,219,0,0
-BRDA:111,219,1,0
-BRDA:114,239,0,0
-BRDA:114,239,1,0
+BRDA:108,192,1,10401
+BRDA:111,219,0,10140
+BRDA:111,219,1,261
+BRDA:114,239,0,260
+BRDA:114,239,1,1
 FN:120,System.Boolean Poker.Lib.Player::IsStraight(Poker.ICard[])
-FNDA:36,System.Boolean Poker.Lib.Player::IsStraight(Poker.ICard[])
-DA:121,36
-DA:122,36
-DA:123,360
-DA:124,144
-DA:125,144
-DA:126,0
-DA:127,0
-DA:129,144
-DA:130,144
-DA:131,36
-DA:132,36
-BRDA:123,59,1,144
-BRDA:125,35,0,0
-BRDA:125,35,1,144
-BRDA:123,59,0,36
+FNDA:10958,System.Boolean Poker.Lib.Player::IsStraight(Poker.ICard[])
+DA:121,10958
+DA:122,10958
+DA:123,25712
+DA:124,12780
+DA:125,12780
+DA:126,10882
+DA:127,10882
+DA:129,1898
+DA:130,1898
+DA:131,76
+DA:132,10958
+BRDA:123,59,1,12780
+BRDA:125,35,0,10882
+BRDA:125,35,1,1898
+BRDA:123,59,0,76
 FN:134,System.Boolean Poker.Lib.Player::IsAllSameSuit(Poker.ICard[])
-FNDA:36,System.Boolean Poker.Lib.Player::IsAllSameSuit(Poker.ICard[])
-DA:135,36
-DA:136,36
-DA:137,360
-DA:138,144
-DA:139,144
-DA:140,0
-DA:141,0
-DA:143,144
-DA:144,36
-DA:145,36
-BRDA:137,53,1,144
-BRDA:139,31,0,0
-BRDA:139,31,1,144
-BRDA:137,53,0,36
+FNDA:10958,System.Boolean Poker.Lib.Player::IsAllSameSuit(Poker.ICard[])
+DA:135,10958
+DA:136,10958
+DA:137,50060
+DA:138,24513
+DA:139,24513
+DA:140,10441
+DA:141,10441
+DA:143,14072
+DA:144,517
+DA:145,10958
+BRDA:137,53,1,24513
+BRDA:139,31,0,10441
+BRDA:139,31,1,14072
+BRDA:137,53,0,517
 FN:147,System.Void Poker.Lib.Player::FindSetsOfCardsWithSameValue(Poker.ICard[],System.Collections.Generic.List`1<System.Int32>&,System.Collections.Generic.List`1<System.Int32>&)
-FNDA:0,System.Void Poker.Lib.Player::FindSetsOfCardsWithSameValue(Poker.ICard[],System.Collections.Generic.List`1<System.Int32>&,System.Collections.Generic.List`1<System.Int32>&)
-DA:148,0
-DA:150,0
-DA:151,0
-DA:152,0
-DA:153,0
+FNDA:10922,System.Void Poker.Lib.Player::FindSetsOfCardsWithSameValue(Poker.ICard[],System.Collections.Generic.List`1<System.Int32>&,System.Collections.Generic.List`1<System.Int32>&)
+DA:148,10922
+DA:150,10922
+DA:151,10922
+DA:152,10922
+DA:153,10922
 FN:155,System.Collections.Generic.List`1<System.Int32> Poker.Lib.Player::FindSetsOfCardsWithSameValue_Helper(Poker.ICard[],System.Int32&)
-FNDA:0,System.Collections.Generic.List`1<System.Int32> Poker.Lib.Player::FindSetsOfCardsWithSameValue_Helper(Poker.ICard[],System.Int32&)
-DA:156,0
-DA:157,0
-DA:158,0
-DA:159,0
-DA:160,0
-DA:161,0
-DA:162,0
-DA:163,0
-DA:164,0
-DA:165,0
-DA:166,0
-DA:167,0
-DA:168,0
-DA:169,0
-DA:170,0
-DA:171,0
-DA:173,0
-DA:174,0
-DA:175,0
-BRDA:158,115,1,0
-BRDA:162,38,0,0
-BRDA:164,54,0,0
-BRDA:164,54,1,0
-BRDA:162,38,1,0
-BRDA:168,88,0,0
-BRDA:168,88,1,0
-BRDA:158,115,0,0
+FNDA:21844,System.Collections.Generic.List`1<System.Int32> Poker.Lib.Player::FindSetsOfCardsWithSameValue_Helper(Poker.ICard[],System.Int32&)
+DA:156,21844
+DA:157,21844
+DA:158,82850
+DA:159,43688
+DA:160,43688
+DA:161,43688
+DA:162,43688
+DA:163,21983
+DA:164,21983
+DA:165,21177
+DA:166,21983
+DA:167,21983
+DA:168,21705
+DA:169,13185
+DA:170,13185
+DA:171,13185
+DA:173,30503
+DA:174,21844
+DA:175,21844
+BRDA:158,115,1,43688
+BRDA:162,38,0,21983
+BRDA:164,54,0,21177
+BRDA:164,54,1,21983
+BRDA:162,38,1,21705
+BRDA:168,88,0,13185
+BRDA:168,88,1,30503
+BRDA:158,115,0,21844
 FN:176,System.Void Poker.Lib.Player::set_Discard(Poker.ICard[])
 FNDA:0,System.Void Poker.Lib.Player::set_Discard(Poker.ICard[])
 DA:177,0
@@ -418,19 +418,19 @@ BRDA:184,26,1,0
 BRDA:182,82,0,0
 BRDA:180,99,0,0
 FN:16,System.Void Poker.Lib.Player::.ctor(System.String,System.Int32)
-FNDA:36,System.Void Poker.Lib.Player::.ctor(System.String,System.Int32)
-DA:17,36
-DA:18,36
-DA:19,36
-DA:20,36
-DA:21,36
-DA:22,36
+FNDA:10976,System.Void Poker.Lib.Player::.ctor(System.String,System.Int32)
+DA:17,10976
+DA:18,10976
+DA:19,10976
+DA:20,10976
+DA:21,10976
+DA:22,10976
 LF:132
-LH:57
+LH:108
 BRF:54
-BRH:19
+BRH:45
 FNF:14
-FNH:8
+FNH:10
 end_of_record
 SF:C:\Users\Sixten\Desktop\Källkodsarkiv\Poker Test\Poker\PokerLib\PokerGame.cs
 FN:10,Poker.IPlayer[] Poker.Lib.PokerGame::get_Players()
@@ -526,18 +526,18 @@ DA:123,0
 BRDA:112,86,1,0
 BRDA:112,86,0,0
 FN:12,System.Void Poker.Lib.PokerGame::.ctor(System.String[])
-FNDA:0,System.Void Poker.Lib.PokerGame::.ctor(System.String[])
-DA:13,0
-DA:14,0
-DA:15,0
-DA:16,0
-DA:17,0
-DA:18,0
-DA:19,0
-DA:20,0
+FNDA:1,System.Void Poker.Lib.PokerGame::.ctor(System.String[])
+DA:13,1
+DA:14,1
+DA:15,1
+DA:16,12
+DA:17,5
+DA:18,5
+DA:19,5
+DA:20,1
 DA:47,0
-BRDA:16,64,1,0
-BRDA:16,64,0,0
+BRDA:16,64,1,5
+BRDA:16,64,0,1
 FN:21,System.Void Poker.Lib.PokerGame::.ctor(System.String)
 FNDA:0,System.Void Poker.Lib.PokerGame::.ctor(System.String)
 DA:22,0
@@ -556,13 +556,13 @@ DA:35,0
 DA:36,0
 DA:37,0
 BRDA:24,23,0,0
-BRDA:32,131,1,0
-BRDA:32,131,0,0
+BRDA:32,123,1,0
+BRDA:32,123,0,0
 BRDA:24,23,1,0
 LF:84
-LH:0
+LH:8
 BRF:30
-BRH:0
+BRH:2
 FNF:6
-FNH:0
+FNH:1
 end_of_record
