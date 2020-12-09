@@ -11,33 +11,44 @@ namespace PokerLib.UnitTest
     [TestFixture]
     public class DealerTest
     {
-        class MockDeck : Deck
+        class MockDeck : IDeck
         {
             public MockDeck(int numberOfPlayers, string[] hands)
             {
                 
             }
 
+            public ICard DrawTopCard()
+            {
+                throw new System.NotImplementedException();
+            }
 
+            public void ReturnCard(Player[] players)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public void Shuffle()
+            {
+                throw new System.NotImplementedException();
+            }
         }
 
         [Test]
         public void DealerCanDeal()
         {
-            /*
             Dealer dealer = new Dealer(new Deck());
 
             Player[] players = new Player[]
             {
-                new Player("Lucas", 0);
-                new Player("Oliver", 0);
+                new Player("Lucas", 0),
+                new Player("Oliver", 0)
             };
 
-            dealer.Deal(players);
+            dealer.FirstDeal(players);
 
             Assert.AreEqual(players[0].Hand.Count(), 5, players[0].Name);
-            Assert.AreEqual(players[1].);
-            */
+            Assert.AreEqual(players[1].Hand.Count(), 5, players[1].Name);
 
 
         }
