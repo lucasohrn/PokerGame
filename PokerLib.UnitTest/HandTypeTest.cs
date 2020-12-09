@@ -157,7 +157,7 @@ namespace PokerLib.UnitTest
         }
 
         [Test, Combinatorial]
-        public void CanEvaluatethreeOfAKind([Values(0, 1, 2, 3, 4)] int irellevantCard, [Values(0, 1, 2, 3, 4)] int irellevantCard2,
+        public void CanEvaluateThreeOfAKind([Values(0, 1, 2, 3, 4)] int irellevantCard, [Values(0, 1, 2, 3, 4)] int irellevantCard2,
         [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int rank)
         {
             Assume.That(irellevantCard != irellevantCard2);
@@ -183,7 +183,7 @@ namespace PokerLib.UnitTest
 
             player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
             player.BeforeShowHand();
-            Assert.IsTrue(player.HandType == Poker.HandType.FourOfAKind);
+            Assert.IsTrue(player.HandType == Poker.HandType.ThreeOfAKind);
         }
 
         [Test, Combinatorial]
