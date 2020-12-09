@@ -13,14 +13,16 @@ namespace PokerLib.UnitTest
     {
         class MockDeck : IDeck
         {
+            
+            public bool DealerShuffledTheDeck { get; private set; }
             public MockDeck(int numberOfPlayers, string[] hands)
             {
-                
+
             }
 
             public ICard DrawTopCard()
             {
-                throw new System.NotImplementedException();
+                return null;
             }
 
             public void ReturnCard(Player[] players)
@@ -30,7 +32,7 @@ namespace PokerLib.UnitTest
 
             public void Shuffle()
             {
-                throw new System.NotImplementedException();
+                DealerShuffledTheDeck = true;
             }
         }
 
@@ -38,6 +40,24 @@ namespace PokerLib.UnitTest
         public void DealerCanDeal()
         {
             Dealer dealer = new Dealer(new Deck());
+
+            ICard[] testHand1 = new Card[]
+            {
+                new Card(Clubs, Two),
+                new Card(Hearts, Two),
+                new Card(Clubs, Three),
+                new Card(Hearts, Three),
+                new Card(Clubs, Four)
+            };
+
+            ICard[] testHand2 = new Card[]
+            {
+                new Card(Diamonds, Two),
+                new Card(Spades, Two),
+                new Card(Diamonds, Three),
+                new Card(Spades, Three),
+                new Card(Diamonds, Four)
+            };
 
             Player[] players = new Player[]
             {
@@ -47,10 +67,12 @@ namespace PokerLib.UnitTest
 
             dealer.FirstDeal(players);
 
-            Assert.AreEqual(players[0].Hand.Count(), 5, players[0].Name);
-            Assert.AreEqual(players[1].Hand.Count(), 5, players[1].Name);
+            Assert.AreEqual(players[0].Hand.Count(), 5);
+            Assert.AreEqual(players[1].Hand.Count(), 5);
 
-
+            CollectionAssert.AreEqual(players[0].Hand, testHand1);
+            CollectionAssert.AreEqual(players[1].Hand, testHand2);
         }
+
     }
 }
