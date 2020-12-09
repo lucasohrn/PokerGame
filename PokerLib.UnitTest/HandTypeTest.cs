@@ -161,6 +161,7 @@ namespace PokerLib.UnitTest
         [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int rank)
         {
             Assume.That(irellevantCard != irellevantCard2);
+
             Player player = new Poker.Lib.Player("", 1);
 
             for (int i = 0; i < 5; ++i)
@@ -169,11 +170,28 @@ namespace PokerLib.UnitTest
                 {
                     if (rank == 2)
                     {
-                        player.Hand[i] = new Card((Suite)0, (Rank)(rank + 1));
+                        player.Hand[i] = new Card((Suite)2, (Rank)(rank + 4));
                     }
                     else
                     {
-                        player.Hand[i] = new Card((Suite)0, (Rank)(rank - 1));
+                        player.Hand[i] = new Card((Suite)1, (Rank)(rank - 1));
+                    }
+                    continue;
+                }
+
+                else if (i == irellevantCard2)
+                {
+                    if (rank == 2)
+                    {
+                        player.Hand[i] = new Card((Suite)2, (Rank)(rank + 5));
+                    }
+                    else if (rank == 3)
+                    {
+                        player.Hand[i] = new Card((Suite)1, (Rank)(rank + 3));
+                    }
+                    else
+                    {
+                        player.Hand[i] = new Card((Suite)1, (Rank)(rank - 2));
                     }
                     continue;
                 }
