@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace PokerLib.UnitTest
 {
-    public class Tests
+    public class GameTest
     {
         [SetUp]
         public void Setup()
@@ -97,10 +97,29 @@ namespace PokerLib.UnitTest
             Assert.IsTrue(player.HandType == Poker.HandType.FullHouse);
         }
 
+        [Test]
+        public void CanEvaluateFlush([Values(0, 1, 2, 3)] int suite) 
+        {
+            //A flush is a hand that contains five cards all of the same suit
+            Player player = new Poker.Lib.Player("", 1);
+
+            Card[] cards = new Card[5] { new Card((Suite)suite, Rank.Two), new Card((Suite)suite, Rank.Four),
+            new Card((Suite)suite, Rank.Six), new Card((Suite)suite, Rank.Eight), new Card((Suite)suite, Rank.Ace) };
+
+            for (int i = 0; i < 5; i++)
+            {
+                player.Hand[i] = cards[i];
+            }
+
+            player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
+            player.BeforeShowHand();
+            Assert.IsTrue(player.HandType == Poker.HandType.Flush);
+        }
+
         [Test, Combinatorial]
         public void CanEvaluateStraight([Values(2, 3, 4, 5, 6, 7, 8, 9)] int rank, [Values(0, 1, 2, 3, 4)] int oddColor)
         {
-            //A royal straight flush is a hand that contains five cards of sequential rank, all of the same suit
+            //A straight is a hand that contains five cards of sequential rank
             Player player = new Poker.Lib.Player("", 1);
 
             for (int i = 0; i < 5; ++i)
@@ -120,24 +139,26 @@ namespace PokerLib.UnitTest
         }
 
         [Test, Combinatorial]
-        public void CanEvaluatethreeOfAKind([Values(0, 1, 2, 3, 4)] int irellevantCard, [Values(0, 1, 2, 3, 4)] int irellevantCard2,
+        public void CanEvaluatethreeOfAKind(
+        [Values(0, 1, 2, 3, 4)] int irellevantCard1, [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int irrelevantCardValue1,
+        [Values(0, 1, 2, 3, 4)] int irellevantCard2, [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int irrelevantCardValue2,
         [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int rank)
         {
-            Assume.That(irellevantCard != irellevantCard2);
+            Assume.That(irrelevantCardValue1 != irrelevantCardValue2);
+            Assume.That(irellevantCard1 != irellevantCard2);
+
             Player player = new Poker.Lib.Player("", 1);
 
             for (int i = 0; i < 5; ++i)
             {
-                if (i == irellevantCard)
+                if (i == irellevantCard1)
                 {
-                    if (rank == 2)
-                    {
-                        player.Hand[i] = new Card((Suite)0, (Rank)(rank + 1));
-                    }
-                    else
-                    {
-                        player.Hand[i] = new Card((Suite)0, (Rank)(rank - 1));
-                    }
+                    player.Hand[i] = new Card((Suite)1, (Rank)(irrelevantCardValue1));
+                    continue;
+                }
+                else if (i == irellevantCard2)
+                {
+                    player.Hand[i] = new Card((Suite)3, (Rank)(irrelevantCardValue2));
                     continue;
                 }
 
@@ -146,7 +167,7 @@ namespace PokerLib.UnitTest
 
             player.graveyard = new Graveyard(); //kommer returna en error om spelaren inte har en graveyard;
             player.BeforeShowHand();
-            Assert.IsTrue(player.HandType == Poker.HandType.FourOfAKind);
+            Assert.IsTrue(player.HandType == Poker.HandType.ThreeOfAKind);
         }
 
         [Test, Combinatorial]
@@ -214,7 +235,7 @@ namespace PokerLib.UnitTest
         {
 
             for (int j = counter; j < 1000; j++)
-            { 
+            {
                 if (rank != 14 - j)
                 {
                     counter++;
