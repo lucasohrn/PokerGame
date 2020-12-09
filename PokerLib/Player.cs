@@ -7,14 +7,27 @@ using System.Runtime.CompilerServices;
 
 namespace Poker.Lib
 {
-    class Player : IPlayer
+    public delegate void CardChossenForExchange(Card[] cardsForExchange); // tillags test
+    public class Player : IPlayer
     {
+        //private IPlayerLogic PlayerLogic { get; set; }
+        public event CardChossenForExchange OnCardChoosenForExchange;
+
+        internal void CardsHaveBeenChoosenForExchange(Card[] cardsForExchange)
+        {
+            if (OnCardChoosenForExchange != null)
+            {
+                OnCardChoosenForExchange(cardsForExchange);
+            }
+        }
+
+
         public string Name => name;
         private string name;
 
         public int Wins { get; set; }
 
-        public Player(string playerName, int playerWins)
+        public Player(string playerName, int playerWins /*, IPlayerLogic playerLogic*/)
         {
             name = playerName;
             Wins = playerWins;
