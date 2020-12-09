@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using PokerLib;
 
 namespace Poker.Lib
 {
-    class Deck
+    class Deck : IDeck
     {
         List<Card> deck = new List<Card>(52);
+        
         public Deck()
         {
             for (int i = 0; i < 13; i++)
