@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("PokerLib.UnitTest")]
 
 namespace Poker.Lib
 {
@@ -27,11 +29,11 @@ namespace Poker.Lib
                 string[] data = json.Split(' ');
                 string[] names = JsonConvert.DeserializeObject<String[]>(data[0]);
                 int[] wins = JsonConvert.DeserializeObject<int[]>(data[1]);
-                
+
                 this.players = new Player[names.Length];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    this.players[i] = new Player(names[i], wins[i]);   
+                    this.players[i] = new Player(names[i], wins[i]);
                 }
             }
         }
@@ -48,6 +50,7 @@ namespace Poker.Lib
         public void RunGame()
         {
             dealer = new Dealer(players);
+
             while (!gameIsOver)
             {
                 if (NewDeal != null)
@@ -101,7 +104,7 @@ namespace Poker.Lib
         {
             Environment.Exit(0);
         }
-        public void SaveGameAndExit(string fileName)
+        public void SaveGame(string fileName)
         {
             string[] names;
             int[] wins;
@@ -114,12 +117,11 @@ namespace Poker.Lib
                 names[i] = players[i].Name;
                 wins[i] = players[i].Wins;
             }
-     
+
             string json = JsonConvert.SerializeObject(names);
             json += (" " + JsonConvert.SerializeObject(wins));
             File.WriteAllText(fileName, json);
             Console.WriteLine("Spelet har sparats");
-            Environment.Exit(0);
         }
     }
 }

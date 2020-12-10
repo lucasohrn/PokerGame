@@ -18,7 +18,7 @@ namespace Poker.Lib
 
         void Exit();
 
-        void SaveGameAndExit(string fileName);
+        void SaveGame(string fileName);
 
         event OnNewDeal NewDeal;
 

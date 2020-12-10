@@ -51,7 +51,8 @@ namespace Poker.ConsoleApp
                         UserInterface.WaitForKey("Spara spelet? [J/N]").KeyChar) 
                     == 'j')
                 {
-                    game.SaveGameAndExit("savedgame.txt");
+                    game.SaveGame("savedgame.txt");
+                    game.Exit();
                 }
                 else 
                 {
