@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using PokerLib;
+
 namespace Poker.Lib
 {
     class Dealer
     {
-        Deck deck = new Deck();
+        IDeck deck = new Deck();
         private Player[] players;
         Graveyard graveyard = new Graveyard();
 
@@ -18,11 +20,16 @@ namespace Poker.Lib
             }
         }
 
+        public Dealer(Deck deck)
+        {
+            this.deck = deck;
+        }
+
         public void OnNewDeal()
         {
             Returncards();
             deck.Shuffle();
-            FirstDeal();
+            FirstDeal(players); // la till players som argument
         }
         void Returncards()
         {
@@ -55,7 +62,7 @@ namespace Poker.Lib
             return winners;
         }
 
-        public void FirstDeal()
+        public void FirstDeal(Player[] players) // La till players som parameter
         {
             for (int i = 0; i < 5; i++)
             {
