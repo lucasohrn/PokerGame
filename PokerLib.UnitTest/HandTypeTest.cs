@@ -77,7 +77,7 @@ namespace PokerLib.UnitTest
         public void CanEvaluateFullhouse([Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int firstRank,
         [Values(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)] int secondRank)
         {
-            Player player = new Poker.Lib.Player("", 1);
+            Player player = new Player("", 1);
 
             for (int i = 0; i < 5; ++i)
             {
@@ -284,7 +284,7 @@ namespace PokerLib.UnitTest
         }
 
         private int counter;
-
+        [Test, Combinatorial]
         private Card generateCard(int rank)
         {
 
@@ -296,7 +296,7 @@ namespace PokerLib.UnitTest
                     return new Card((Suite)1, (Rank)(14 - j));
                 }
 
-                if (rank != 2 + j)
+                else if (rank != 2 + j)
                 {
                     counter++;
                     return new Card((Suite)3, (Rank)2 + j);

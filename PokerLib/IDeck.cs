@@ -3,7 +3,7 @@ using Poker.Lib;
 
 namespace PokerLib
 {
-    interface IDeck
+    public interface IDeck
     {
         ICard DrawTopCard();
 

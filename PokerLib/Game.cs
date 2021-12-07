@@ -2,7 +2,7 @@ namespace PokerLib
 {
     delegate void ChooseCardsForExchange();
 
-    class Game
+    public class Game
     {
         public Game()
         {

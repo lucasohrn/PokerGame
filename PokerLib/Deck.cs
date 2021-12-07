@@ -4,21 +4,21 @@ using PokerLib;
 
 namespace Poker.Lib
 {
-    class Deck : IDeck
+    public class Deck : IDeck
     {
-        List<Card> deck = new List<Card>(52);
+        public List<Card> deck = new List<Card>(52);
         
         public Deck()
         {
             for (int i = 0; i < 13; i++)
             {
-                Rank rankValue = (Rank)i + 2;
+                Poker.Rank rankValue = (Poker.Rank)i + 2;
 
                 for (int j = 0; j < 4; j++)
                 {
-                    Suite suiteValue = (Suite)j;
-                    Card kort = new Card(suiteValue, rankValue);
-                    deck.Add(kort);
+                    Poker.Suite suiteValue = (Poker.Suite)j;
+                    
+                    deck.Add(new Card(suiteValue, rankValue));
                 }
             }
         }

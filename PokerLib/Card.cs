@@ -5,15 +5,12 @@ namespace Poker.Lib
 {
     public class Card : ICard
     {
-        private Suite suite;
-        private Rank rank;
+        public Suite Suite { get; set; }
+        public Rank Rank { get; set; }
         public Card(Suite suite, Rank rank)
         {
-            this.suite = suite;
-            this.rank = rank;
+            this.Suite = suite;
+            this.Rank = rank;
         }
-        
-        public Suite Suite => suite;
-        public Rank Rank => rank;
     }
 }

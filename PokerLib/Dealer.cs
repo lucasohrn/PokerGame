@@ -4,7 +4,7 @@ using PokerLib;
 
 namespace Poker.Lib
 {
-    class Dealer
+    public class Dealer
     {
         IDeck deck = new Deck();
         private Player[] players;

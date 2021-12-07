@@ -38,7 +38,12 @@ namespace Poker.Lib
             }
         }
 
-        public event OnNewDeal NewDeal;
+		public PokerGame(Player[] players)
+		{
+			this.players = players;
+		}
+
+		public event OnNewDeal NewDeal;
         public event OnSelectCardsToDiscard SelectCardsToDiscard;
         public event OnRecievedReplacementCards RecievedReplacementCards;
         public event OnShowAllHands ShowAllHands;
