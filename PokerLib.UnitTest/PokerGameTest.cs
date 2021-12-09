@@ -18,12 +18,13 @@ namespace PokerLib.UnitTest
         [SetUp]
         public void Setup()
         {
-            game = new PokerGame(new string[2]{"PlayerOne","PlayerTwo" });
+
         }
 
         [Test]
         public void PokerGameInitializeithPlayers()
         {
+            game = new PokerGame(new string[2] { "PlayerOne", "PlayerTwo" });
             Assert.AreEqual(2, this.game.Players.Length);
         }
 
@@ -35,25 +36,22 @@ namespace PokerLib.UnitTest
             PokerGame game = new PokerGame(players);
             game.SaveGame(fileName);
             string[] lines;
-            //Act
+
             lines = File.ReadAllLines(fileName);
 
-            //Assert
             Assert.AreEqual("[\"Anna\",\"Petra\"] [0,0]", lines[0]);
         }
 
         [Test]
         public void GameCanLoadAFile()
         {
-            //Arrange
             string[] players = { "Sven", "Per" };
             string fileName = "savedgame.txt";
             PokerGame game = new PokerGame(players);
             game.SaveGame(fileName);
 
-            //Act
             PokerGame LoadGame = new PokerGame(fileName);
-            //Assert
+
             Assert.AreEqual(2, game.Players.Length);
             Assert.AreEqual("Sven", game.Players[0].Name);
             Assert.AreEqual(0, game.Players[0].Wins);
@@ -86,17 +84,20 @@ namespace PokerLib.UnitTest
                 player.Discard = new ICard[] { player.Hand[i] };
                 eventsIsWorking = true;
                 count++;
+                game.gameIsOver = true;
             }
 
             void IfTheShowAllHandsEventIsWorking()
             {
                 eventsIsWorking = true;
                 count++;
+                game.gameIsOver = true;
             }
             void IfTheWinnerEventIsWorking(IPlayer player)
             {
                 eventsIsWorking = true;
                 count++;
+                game.gameIsOver = true;
             }
             void IfRecievedReplacementCardsWork(IPlayer player) { }
             void IfDrawEventIsWorking(IPlayer[] player) { }

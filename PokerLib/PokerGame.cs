@@ -51,7 +51,7 @@ namespace Poker.Lib
         public event OnDraw Draw;
 
         private Dealer dealer;
-        private bool gameIsOver = false;
+        public bool gameIsOver = false;
         public void RunGame()
         {
             dealer = new Dealer(players);

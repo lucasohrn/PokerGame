@@ -12,30 +12,6 @@ namespace PokerLib.UnitTest
     [TestFixture]
     public class DealerTest
     {
-        class MockDeck : IDeck
-        {
-
-            public bool DealerShuffledTheDeck { get; private set; }
-            public MockDeck(int numberOfPlayers, string[] hands)
-            {
-                
-            }
-
-            public ICard DrawTopCard()
-            {
-                return null;
-            }
-
-            public void ReturnCard(Player[] players)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void Shuffle()
-            {
-                DealerShuffledTheDeck = true;
-            }
-        }
 
         [Test]
         public void DealerCanDeal()
@@ -86,13 +62,14 @@ namespace PokerLib.UnitTest
         public void DealerCanShuffle()
         {
             Deck shuffledDeck = new Deck();
-            Deck unShuffleddeck = new Deck();
+            Deck unShuffledDeck = new Deck();
 
             shuffledDeck.Shuffle();
 
             for (int i = 0; i < shuffledDeck.deck.Count; i++)
             {
-                Assert.AreEqual(shuffledDeck.deck[i], unShuffleddeck.deck[i].Rank);
+                if(unShuffledDeck.deck[i].Rank != shuffledDeck.deck[i].Rank && shuffledDeck.deck[i].Suite != unShuffledDeck.deck[i].Suite)
+                Assert.AreNotEqual(shuffledDeck.deck[i].Rank, unShuffledDeck.deck[i].Rank);
 			}
 
         }
@@ -118,6 +95,32 @@ namespace PokerLib.UnitTest
             deck.DrawTopCard();
             //Assert
             Assert.AreEqual(51, deck.deck.Count);
+        }
+
+        [Test]
+        public void CanFillDeckFromGraveyard()
+        {
+            Deck deck = new Deck();
+            Graveyard graveyard = new Graveyard();
+            Player[] dummyPlayers = new Player[]
+            {
+                new Player("testPlayer1", 0),
+                new Player("testPlayer2", 0)
+            };
+
+            foreach (Player player in dummyPlayers)
+            {
+                player.graveyard = graveyard;
+            }
+
+            // Deck är 51 count
+            graveyard.graveYardCards.Add(deck.deck[0]);
+            deck.DrawTopCard();
+            Assert.AreEqual(51, deck.deck.Count);
+
+            //Deck är 52 count igen
+            deck.ReturnCard(dummyPlayers);
+            Assert.AreEqual(52, deck.deck.Count);
         }
     }
 }

@@ -40,15 +40,9 @@ namespace Poker.Lib
 
         public ICard DrawTopCard()
         {
-            if (deck != null || deck.Count != 0)
-            {
-                ICard firstCard = deck[0];
-                deck.RemoveAt(0);
-                return firstCard;
-            }
-
-            Console.WriteLine("Deck is empty"); // Kasta exeption ej korrekt
-            throw new Exception();
+            ICard firstCard = deck[0];
+            deck.RemoveAt(0);
+            return firstCard;
         }
         public void ReturnCard(Player[] players)
         {
